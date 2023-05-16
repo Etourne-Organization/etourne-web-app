@@ -1,0 +1,19 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #3a9ce2;
+	--secondary-color: #1b1f24;
+	--black-color: #1e1e1e;
+	--white-color: #f6f6f6;
+	--normal-font-size: 1.2rem;
+	--heading-font-size: 3.8rem;
+	--subheading-font-size: 2.2rem;
+}
+
+body {
+	font-family: 'PT sans';
+}
