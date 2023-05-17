@@ -1,5 +1,18 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+
 	import Server from '$lib/selectServer/Server.svelte';
+	import { getUser } from '$lib/supabase/auth';
+
+	onMount(async () => {
+		let discordUser: any;
+		getUser().subscribe((u) => (discordUser = u));
+
+		if (!discordUser) {
+			goto('/');
+		}
+	});
 </script>
 
 <svelte:head>
