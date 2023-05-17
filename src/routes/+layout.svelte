@@ -1,9 +1,16 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	import Navbar from '$lib/navbar/Navbar.svelte';
 	import '../css/global.css';
 </script>
 
-<div class="layout">
+<div
+	class="layout"
+	style="background: {$page.url.pathname === '/'
+		? "url('/landingPage/landing-page-bkg.png') no-repeat center center/cover"
+		: 'var(--secondary-color'}"
+>
 	<Navbar />
 	<div class="children">
 		<slot />
@@ -13,8 +20,6 @@
 <style lang="scss">
 	.layout {
 		height: 100vh;
-		background: url('/landingPage/landing-page-bkg.png') no-repeat center
-			center/cover;
 
 		.children {
 			padding: 50px 100px;
