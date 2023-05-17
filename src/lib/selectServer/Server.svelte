@@ -1,0 +1,46 @@
+<script lang="ts">
+	export let imgUrl: string;
+	export let serverName: string;
+</script>
+
+<div class="parent">
+	<img src={imgUrl} alt="server url" />
+	<p>{serverName}</p>
+</div>
+
+<style lang="scss">
+	.parent {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			border-radius: 15px;
+			width: 120px;
+		}
+
+		p {
+			font-size: var(--normal-font-size);
+			color: var(--white-color);
+			text-align: center;
+		}
+
+		&:hover {
+			cursor: pointer;
+			transform: translateZ(0);
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+			backface-visibility: hidden;
+			-moz-osx-font-smoothing: grayscale;
+			transition-duration: 0.3s;
+			transition-property: transform;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			transform: scale(1.1);
+		}
+	}
+</style>

@@ -5,7 +5,9 @@
 
 <div class="layout">
 	<Navbar />
-	<slot />
+	<div class="children">
+		<slot />
+	</div>
 </div>
 
 <style lang="scss">
@@ -13,5 +15,9 @@
 		height: 100vh;
 		background: url('/landingPage/landing-page-bkg.png') no-repeat center
 			center/cover;
+
+		.children {
+			padding: 50px 100px;
+		}
 	}
 </style>
