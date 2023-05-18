@@ -4,8 +4,10 @@ import { writable } from 'svelte/store';
 import { supabase } from './supabaseClient';
 
 const userStore = writable();
+const session = writable();
 
 supabase.auth.getSession().then(({ data }) => {
+	session.set(data.session);
 	userStore.set(data.session?.user);
 });
 
@@ -21,12 +23,13 @@ export const getUser = () => {
 	return userStore;
 };
 
+export const getSession = () => {
+	return session;
+};
+
 export const signIn = async () => {
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: 'discord',
-		// options: {
-		// 	redirectTo: 'http://localhost:5173/selectServer',
-		// },
 	});
 
 	return { data, error };

@@ -1,0 +1,48 @@
+{
+	"id": "ebe1994c-3a0a-4476-9ed0-9aed47c158b6",
+	"aud": "authenticated",
+	"role": "authenticated",
+	"email": "test@gmail.com",
+	"email_confirmed_at": "2023-05-17T17:27:27.32456Z",
+	"phone": "",
+	"confirmed_at": "2023-05-17T17:27:27.32456Z",
+	"last_sign_in_at": "2023-05-18T17:34:50.440544Z",
+	"app_metadata": {
+		"provider": "discord",
+		"providers": ["discord"]
+	},
+	"user_metadata": {
+		"avatar_url": "https://cdn.discordapp.com/avatars/374230181889572876/e1ba32a8d2ee43f183171d1da8b3e111.png",
+		"email": "test@gmail.com",
+		"email_verified": true,
+		"full_name": "mz10ah",
+		"iss": "https://discord.com/api",
+		"name": "mz10ah#0054",
+		"picture": "https://cdn.discordapp.com/avatars/374230181889572876/e1ba32a8d2ee43f183171d1da8b3e111.png",
+		"provider_id": "374230181889572876",
+		"sub": "374230181889572876"
+	},
+	"identities": [
+		{
+			"id": "374230181889572876",
+			"user_id": "ebe1994c-3a0a-4476-9ed0-9aed47c158b6",
+			"identity_data": {
+				"avatar_url": "https://cdn.discordapp.com/avatars/374230181889572876/e1ba32a8d2ee43f183171d1da8b3e111.png",
+				"email": "test@gmail.com",
+				"email_verified": true,
+				"full_name": "mz10ah",
+				"iss": "https://discord.com/api",
+				"name": "mz10ah#0054",
+				"picture": "https://cdn.discordapp.com/avatars/374230181889572876/e1ba32a8d2ee43f183171d1da8b3e111.png",
+				"provider_id": "374230181889572876",
+				"sub": "374230181889572876"
+			},
+			"provider": "discord",
+			"last_sign_in_at": "2023-05-17T17:27:27.318952Z",
+			"created_at": "2023-05-17T17:27:27.318996Z",
+			"updated_at": "2023-05-18T17:34:50.437326Z"
+		}
+	],
+	"created_at": "2023-05-17T17:27:27.293094Z",
+	"updated_at": "2023-05-18T17:34:50.442694Z"
+}

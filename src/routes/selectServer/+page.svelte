@@ -5,13 +5,21 @@
 	import Server from '$lib/selectServer/Server.svelte';
 	import { getUser } from '$lib/supabase/auth';
 
+	// testing fetch discord server
+	// const fetchGuilds = async () => {
+	// 	await fetch('https://discord.com/api/users/@me/guilds')
+	// 		.then((res) => res.json)
+	// 		.then((res) => console.log(res));
+	// };
+
+	// fetchGuilds();
+
 	onMount(async () => {
 		let discordUser: any;
 
 		getUser().subscribe((u) => (discordUser = u));
 
 		if (!discordUser) {
-			console.log('not signed in');
 			goto('/');
 		}
 	});
