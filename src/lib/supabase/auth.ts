@@ -24,12 +24,10 @@ export const getUser = () => {
 export const signIn = async () => {
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: 'discord',
-		options: {
-			redirectTo: 'http://localhost:5173/selectServer',
-		},
+		// options: {
+		// 	redirectTo: 'http://localhost:5173/selectServer',
+		// },
 	});
-
-	console.log(data);
 
 	return { data, error };
 };

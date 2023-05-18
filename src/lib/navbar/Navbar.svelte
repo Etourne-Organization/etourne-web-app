@@ -15,9 +15,8 @@
 	};
 
 	const signOut = async () => {
-		console.log('click');
-
 		await signOutWithDiscord();
+		goto('/');
 	};
 </script>
 
@@ -25,6 +24,9 @@
 	<img src="/logo/etourne-letter-logo.svg" alt="" />
 	<div class="right">
 		<ul class="nav-list">
+			<li class="nav-li-link">
+				<a href="/selectServer" class="link">Dashboard</a>
+			</li>
 			<li class="nav-li-link">
 				<a href="/" class="link">About</a>
 			</li>

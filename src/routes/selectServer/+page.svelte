@@ -7,9 +7,11 @@
 
 	onMount(async () => {
 		let discordUser: any;
+
 		getUser().subscribe((u) => (discordUser = u));
 
 		if (!discordUser) {
+			console.log('not signed in');
 			goto('/');
 		}
 	});
