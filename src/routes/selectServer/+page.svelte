@@ -1,13 +1,31 @@
 <script lang="ts">
+	export let data: string | undefined = undefined;
+
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	import Server from '$lib/selectServer/Server.svelte';
-	import { getUser } from '$lib/supabase/auth';
+	import { getUser, getSession } from '$lib/supabase/auth';
+
+	console.log(data);
 
 	// testing fetch discord server
+	// let session: any;
+
+	// getSession().subscribe((s) => (session = s));
+
+	// console.log(session);
+
 	// const fetchGuilds = async () => {
-	// 	await fetch('https://discord.com/api/users/@me/guilds')
+	// 	// console.log({
+	// 	// 	authorization: `${session.token_type} ${session.access_token}`,
+	// 	// });
+
+	// 	await fetch('https://discord.com/api/users/@me/guilds', {
+	// 		headers: {
+	// 			authorization: `${session.token_type} ${session.access_token}`,
+	// 		},
+	// 	})
 	// 		.then((res) => res.json)
 	// 		.then((res) => console.log(res));
 	// };
@@ -16,8 +34,30 @@
 
 	onMount(async () => {
 		let discordUser: any;
+		let session: any;
 
 		getUser().subscribe((u) => (discordUser = u));
+
+		getSession().subscribe((s) => {
+			console.log(s);
+			session = s;
+		});
+
+		const fetchGuilds = async () => {
+			console.log({
+				authorization: `${session.token_type} ${session.access_token}`,
+			});
+
+			await fetch('https://discord.com/api/users/@me/guilds', {
+				headers: {
+					authorization: `${session.token_type} ${session.access_token}`,
+				},
+			})
+				.then((res) => res.json)
+				.then((res) => console.log(res));
+		};
+
+		fetchGuilds();
 
 		if (!discordUser) {
 			goto('/');
