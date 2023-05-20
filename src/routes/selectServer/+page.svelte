@@ -8,10 +8,15 @@
 	import { getUser, getSession } from '$lib/supabase/auth';
 
 	// console.log(data);
+	// https://cdn.discordapp.com/icons/guild_id/guild_icon.png
 
 	onMount(async () => {
 		let discordUser: any;
 		let session: any;
+
+		if (!discordUser) {
+			goto('/');
+		}
 
 		getUser().subscribe((u) => (discordUser = u));
 
@@ -20,20 +25,18 @@
 			session = s;
 		});
 
-		const fetchGuilds = async () => {
-			await fetch('https://discord.com/api/users/@me/guilds', {
-				headers: {
-					Authorization: `Bearer ${session.provider_token}`,
-				},
-			})
-				.then((res) => res.json())
-				.then((res) => console.log(res));
-		};
+		if (session) {
+			const fetchGuilds = async () => {
+				await fetch('https://discord.com/api/users/@me/guilds', {
+					headers: {
+						Authorization: `Bearer ${session.provider_token}`,
+					},
+				})
+					.then((res) => res.json())
+					.then((res) => console.log(res));
+			};
 
-		fetchGuilds();
-
-		if (!discordUser) {
-			goto('/');
+			fetchGuilds();
 		}
 	});
 </script>

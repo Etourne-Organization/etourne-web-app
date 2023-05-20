@@ -41,5 +41,8 @@ export const signIn = async () => {
 export const signOut = async () => {
 	const { error } = await supabase.auth.signOut();
 
+	userStore.set(null);
+	session.set(null);
+
 	return error;
 };
