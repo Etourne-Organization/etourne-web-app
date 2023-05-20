@@ -30,6 +30,9 @@ export const getSession = () => {
 export const signIn = async () => {
 	const { data, error } = await supabase.auth.signInWithOAuth({
 		provider: 'discord',
+		options: {
+			scopes: 'guilds',
+		},
 	});
 
 	return { data, error };

@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let data: string | undefined = undefined;
+	export const data: string | undefined = undefined;
 
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -7,30 +7,7 @@
 	import Server from '$lib/selectServer/Server.svelte';
 	import { getUser, getSession } from '$lib/supabase/auth';
 
-	console.log(data);
-
-	// testing fetch discord server
-	// let session: any;
-
-	// getSession().subscribe((s) => (session = s));
-
-	// console.log(session);
-
-	// const fetchGuilds = async () => {
-	// 	// console.log({
-	// 	// 	authorization: `${session.token_type} ${session.access_token}`,
-	// 	// });
-
-	// 	await fetch('https://discord.com/api/users/@me/guilds', {
-	// 		headers: {
-	// 			authorization: `${session.token_type} ${session.access_token}`,
-	// 		},
-	// 	})
-	// 		.then((res) => res.json)
-	// 		.then((res) => console.log(res));
-	// };
-
-	// fetchGuilds();
+	// console.log(data);
 
 	onMount(async () => {
 		let discordUser: any;
@@ -44,16 +21,12 @@
 		});
 
 		const fetchGuilds = async () => {
-			console.log({
-				authorization: `${session.token_type} ${session.access_token}`,
-			});
-
 			await fetch('https://discord.com/api/users/@me/guilds', {
 				headers: {
-					authorization: `${session.token_type} ${session.access_token}`,
+					Authorization: `Bearer ${session.provider_token}`,
 				},
 			})
-				.then((res) => res.json)
+				.then((res) => res.json())
 				.then((res) => console.log(res));
 		};
 
