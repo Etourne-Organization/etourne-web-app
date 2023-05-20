@@ -8,6 +8,7 @@
 	import { getUser, getSession } from '$lib/supabase/auth';
 
 	// console.log(data);
+	// to get guild icon (guild image)
 	// https://cdn.discordapp.com/icons/guild_id/guild_icon.png
 
 	onMount(async () => {
