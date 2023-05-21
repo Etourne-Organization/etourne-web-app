@@ -14,10 +14,7 @@
 	onMount(async () => {
 		let discordUser: any;
 		let session: any;
-
-		if (!discordUser) {
-			goto('/');
-		}
+		let guilds: [];
 
 		getUser().subscribe((u) => (discordUser = u));
 
@@ -25,6 +22,10 @@
 			console.log(s);
 			session = s;
 		});
+
+		if (!discordUser) {
+			goto('/');
+		}
 
 		if (session) {
 			const fetchGuilds = async () => {
@@ -34,7 +35,7 @@
 					},
 				})
 					.then((res) => res.json())
-					.then((res) => console.log(res));
+					.then((res) => (guilds = res));
 			};
 
 			fetchGuilds();
