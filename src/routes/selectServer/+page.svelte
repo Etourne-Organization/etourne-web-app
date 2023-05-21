@@ -1,6 +1,9 @@
 <script lang="ts">
 	export const data: string | undefined = undefined;
 
+	let guilds: [] | any = [];
+	let isLoading: boolean = true;
+
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
@@ -14,7 +17,6 @@
 	onMount(async () => {
 		let discordUser: any;
 		let session: any;
-		let guilds: [];
 
 		getUser().subscribe((u) => (discordUser = u));
 
@@ -28,17 +30,17 @@
 		}
 
 		if (session) {
-			const fetchGuilds = async () => {
-				await fetch('https://discord.com/api/users/@me/guilds', {
-					headers: {
-						Authorization: `Bearer ${session.provider_token}`,
-					},
-				})
-					.then((res) => res.json())
-					.then((res) => (guilds = res));
-			};
+			await fetch('https://discord.com/api/users/@me/guilds', {
+				headers: {
+					Authorization: `Bearer ${session.provider_token}`,
+				},
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					guilds = res;
+				});
 
-			fetchGuilds();
+			isLoading = false;
 		}
 	});
 </script>
@@ -55,11 +57,21 @@
 	<p class="text">
 		Servers you and Etourne bot is in. Please select a server.
 	</p>
-	<ul class="server-list">
-		<Server imgUrl="/exampleImages/nd-logo.png" serverName="Noob Dev 54" />
-		<Server imgUrl="/exampleImages/nd-logo.png" serverName="Noob Dev 54" />
-		<Server imgUrl="/exampleImages/nd-logo.png" serverName="Noob Dev 54" />
-	</ul>
+	{#if isLoading}
+		<p class="loading-text">Loading</p>
+	{:else}
+		<ul class="server-list">
+			{#each guilds as g}
+				<Server
+					id={g.id}
+					imgUrl={g.icon
+						? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png`
+						: '/logo/etourne-logo-with-bkg.png'}
+					serverName={g.name}
+				/>
+			{/each}
+		</ul>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -74,6 +86,12 @@
 			}
 		}
 
+		.loading-text {
+			font-size: var(--normal-font-size);
+			color: var(--white-color);
+			margin-top: 20px;
+		}
+
 		.text {
 			font-size: var(--normal-font-size);
 			color: var(--white-color);
@@ -83,8 +101,10 @@
 		.server-list {
 			margin-top: 50px;
 
-			display: flex;
-			gap: 40px;
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			grid-column-gap: 40px;
+			grid-row-gap: 30px;
 		}
 	}
 </style>

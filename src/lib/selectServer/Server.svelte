@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let imgUrl: string;
 	export let serverName: string;
+	export let id: string;
 </script>
 
-<div class="parent">
+<div class="parent" {id}>
 	<img src={imgUrl} alt="server url" />
 	<p>{serverName}</p>
 </div>
@@ -18,7 +19,7 @@
 
 		img {
 			border-radius: 15px;
-			width: 120px;
+			width: 170px;
 		}
 
 		p {

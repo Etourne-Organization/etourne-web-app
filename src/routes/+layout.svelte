@@ -20,6 +20,7 @@
 <style lang="scss">
 	.layout {
 		height: 100vh;
+		overflow-y: scroll;
 
 		.children {
 			padding: 50px 100px;
