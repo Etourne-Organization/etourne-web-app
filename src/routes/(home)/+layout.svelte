@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	import Navbar from '$lib/navbar/Navbar.svelte';
-	import '../css/global.css';
+	import '../../css/global.css';
 </script>
 
 <div
