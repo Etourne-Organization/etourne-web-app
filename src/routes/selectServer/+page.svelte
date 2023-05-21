@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 
 	import Server from '$lib/selectServer/Server.svelte';
-	import { getUser, getSession } from '$lib/supabase/auth';
+	import { getUser, getSession, signOut } from '$lib/supabase/auth';
 
 	// console.log(data);
 	// to get guild icon (guild image)
@@ -30,6 +30,8 @@
 		}
 
 		if (session) {
+			if (!session.provider_token) signOut();
+
 			await fetch('https://discord.com/api/users/@me/guilds', {
 				headers: {
 					Authorization: `Bearer ${session.provider_token}`,
@@ -58,7 +60,7 @@
 		Servers you and Etourne bot is in. Please select a server.
 	</p>
 	{#if isLoading}
-		<p class="loading-text">Loading</p>
+		<p class="loading-text">Loading ...</p>
 	{:else}
 		<ul class="server-list">
 			{#each guilds as g}
@@ -102,9 +104,10 @@
 			margin-top: 50px;
 
 			display: grid;
-			grid-template-columns: repeat(5, 1fr);
+			grid-template-columns: repeat(5, auto);
 			grid-column-gap: 40px;
 			grid-row-gap: 30px;
+			/* grid-auto-columns: auto; */
 		}
 	}
 </style>

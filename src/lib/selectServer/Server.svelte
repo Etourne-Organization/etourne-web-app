@@ -20,6 +20,7 @@
 		img {
 			border-radius: 15px;
 			width: 170px;
+			/* object-fit: cover; */
 		}
 
 		p {
