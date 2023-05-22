@@ -1,12 +1,15 @@
 <script lang="ts">
 	export let imgUrl: string;
-	export let serverName: string;
+	export let guildName: string;
 	export let id: string;
+	export let index: number;
+
+	import { goto } from '$app/navigation';
 </script>
 
 <div class="parent" {id}>
 	<img src={imgUrl} alt="server url" />
-	<p>{serverName}</p>
+	<p>{guildName}</p>
 </div>
 
 <style lang="scss">

@@ -62,13 +62,14 @@
 		<p class="loading-text">Loading ...</p>
 	{:else}
 		<ul class="server-list">
-			{#each guilds as g}
+			{#each guilds as g, i}
 				<Server
 					id={g.id}
+					index={i}
 					imgUrl={g.icon
 						? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png`
 						: '/logo/etourne-logo-with-bkg.png'}
-					serverName={g.name}
+					guildName={g.name}
 				/>
 			{/each}
 		</ul>

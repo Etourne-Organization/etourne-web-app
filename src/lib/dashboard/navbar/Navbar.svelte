@@ -1,10 +1,19 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
+	import { get } from 'svelte/store';
+
 	import { signOut as signOutWithDiscord, getUser } from '../../supabase/auth';
+	import { guildInfo as guildInfoStore } from '../../../store/guildStore';
 
 	let discordUser: any;
 	getUser().subscribe((u) => (discordUser = u));
+
+	const guildInfo: {
+		imgUrl?: string;
+		guildName?: string;
+		guildId?: string;
+	} = get(guildInfoStore);
 
 	const signOut = async () => {
 		await signOutWithDiscord();
@@ -14,12 +23,14 @@
 
 <div class="parent">
 	<div class="left">
-		<img src="/egIcon/nd-logo.png" alt="discord guild icon" />
-		<h2>Noob Dev 54 Official Server</h2>
+		<img src={guildInfo.imgUrl} alt="discord guild icon" />
+		<h2>{guildInfo.guildName}</h2>
 	</div>
 	<div class="right">
 		<img
-			src={discordUser ? discordUser.user_metadata.avatar_url : '/icons/loading.svg'}
+			src={discordUser
+				? discordUser.user_metadata.avatar_url
+				: '/icons/loading.svg'}
 			alt="discord guild icon"
 		/>
 		<p>{discordUser ? discordUser.user_metadata.full_name : 'Loading'}</p>
