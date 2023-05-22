@@ -25,3 +25,12 @@
 body {
 	font-family: 'PT sans';
 }
+
+.spreaded-title {
+	font-family: 'PT Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-size: var(--normal-font-size);
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+}
