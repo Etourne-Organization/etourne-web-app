@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Sidebar from '$lib/dashboard/sidebar/Sidebar.svelte';
+	import Navbar from '$lib/dashboard/navbar/Navbar.svelte';
 
 	import '../../css/global.css';
 </script>
@@ -10,7 +11,7 @@
 		<Sidebar />
 	</div>
 	<div class="right">
-		<h3>navbar</h3>
+		<Navbar />
 		<div class="children">
 			<slot />
 		</div>
@@ -27,6 +28,7 @@
 		.right {
 			overflow-y: scroll;
 			width: 100%;
+			padding: 50px 55px;
 
 			.children {
 				padding: 50px 100px;
