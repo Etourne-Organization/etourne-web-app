@@ -2,12 +2,15 @@
 	export let imgUrl: string;
 	export let guildName: string;
 	export let id: string;
-	export let index: number;
 
 	import { goto } from '$app/navigation';
+
+	const onClick = () => {
+		goto(`/dashboard/${id}`);
+	};
 </script>
 
-<div class="parent" {id}>
+<div class="parent" {id} on:click={onClick}>
 	<img src={imgUrl} alt="server url" />
 	<p>{guildName}</p>
 </div>

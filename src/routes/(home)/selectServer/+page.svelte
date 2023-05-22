@@ -1,6 +1,4 @@
 <script lang="ts">
-	export const data: string | undefined = undefined;
-
 	let guilds: [] | any = [];
 	let isLoading: boolean = true;
 
@@ -9,10 +7,6 @@
 
 	import Server from '$lib/selectServer/Server.svelte';
 	import { getUser, getSession, signOut } from '$lib/supabase/auth';
-
-	// console.log(data);
-	// to get guild icon (guild image)
-	// https://cdn.discordapp.com/icons/guild_id/guild_icon.png
 
 	onMount(async () => {
 		let discordUser: any;
@@ -29,7 +23,10 @@
 		}
 
 		if (session) {
-			if (!session.provider_token) signOut();
+			if (!session.provider_token) {
+				signOut();
+				goto('/');
+			}
 
 			await fetch('https://discord.com/api/users/@me/guilds', {
 				headers: {
@@ -62,10 +59,9 @@
 		<p class="loading-text">Loading ...</p>
 	{:else}
 		<ul class="server-list">
-			{#each guilds as g, i}
+			{#each guilds as g}
 				<Server
 					id={g.id}
-					index={i}
 					imgUrl={g.icon
 						? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png`
 						: '/logo/etourne-logo-with-bkg.png'}

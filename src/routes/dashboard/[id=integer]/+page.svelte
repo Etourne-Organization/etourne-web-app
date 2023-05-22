@@ -12,6 +12,7 @@
 
 	const { id } = $page.params;
 
+	// if (guildInfo.id) {
 	guildInfoStore.set({
 		imgUrl: guildInfo.icon
 			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -19,6 +20,7 @@
 		guildName: guildInfo.name,
 		guildId: id,
 	});
+	// }
 
 	onMount(async () => {
 		let discordUser: any;
@@ -35,7 +37,10 @@
 		}
 
 		if (session) {
-			if (!session.provider_token) signOut();
+			if (!session.provider_token) {
+				signOut();
+				goto('/');
+			}
 		}
 	});
 </script>

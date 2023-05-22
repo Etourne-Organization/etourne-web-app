@@ -1,4 +1,3 @@
-import { redirect } from '@sveltejs/kit';
 import { writable } from 'svelte/store';
 
 import { supabase } from './supabaseClient';
