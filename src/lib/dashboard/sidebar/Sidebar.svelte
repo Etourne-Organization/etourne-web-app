@@ -2,6 +2,8 @@
 	import DashboardIcon from './icons/DashboardIcon.svelte';
 	import CalendarIcon from './icons/CalendarIcon.svelte';
 	import AddIcon from './icons/AddIcon.svelte';
+
+	let whichLinkHover: string = '';
 </script>
 
 <div class="parent">
@@ -11,16 +13,58 @@
 		</div>
 		<ul class="links">
 			<li>
-				<DashboardIcon />
-				<a href="/dashboard/1">Dashboard</a>
+				<a
+					href="/dashboard/1"
+					on:mouseenter={() => {
+						whichLinkHover = 'DASHBOARD';
+					}}
+					on:mouseleave={() => {
+						whichLinkHover = '';
+					}}
+				>
+					<DashboardIcon
+						color={whichLinkHover === 'DASHBOARD'
+							? 'var(--white-color)'
+							: 'var(--dark-white-color)'}
+					/>
+					Dashboard
+				</a>
 			</li>
 			<li>
-				<CalendarIcon />
-				<a href="/dashboard/1">Events</a>
+				<a
+					href="/dashboard/1"
+					on:mouseenter={() => {
+						whichLinkHover = 'EVENTS';
+					}}
+					on:mouseleave={() => {
+						whichLinkHover = '';
+					}}
+				>
+					<CalendarIcon
+						color={whichLinkHover === 'EVENTS'
+							? 'var(--white-color)'
+							: 'var(--dark-white-color)'}
+					/>
+					Events</a
+				>
 			</li>
 			<li>
-				<AddIcon />
-				<a href="/dashboard/1">Add Event</a>
+				<a
+					href="/dashboard/1"
+					on:mouseenter={() => {
+						whichLinkHover = 'ADD_EVENT';
+					}}
+					on:mouseleave={() => {
+						whichLinkHover = '';
+					}}
+				>
+					<AddIcon
+						color={whichLinkHover === 'ADD_EVENT'
+							? 'var(--white-color)'
+							: 'var(--dark-white-color)'}
+					/>
+					Add Event</a
+				>
 			</li>
 		</ul>
 	</div>
@@ -51,15 +95,16 @@
 				gap: 40px;
 
 				li {
-					display: flex;
-					gap: 20px;
-					align-items: center;
-
 					color: var(--dark-white-color);
 					font-weight: bold;
 
 					a {
+						display: flex;
+						gap: 20px;
+						align-items: center;
+
 						text-decoration: none;
+						padding: 10px 5 10px 0;
 
 						&:visited {
 							color: var(--dark-white-color);
