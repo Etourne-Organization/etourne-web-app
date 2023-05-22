@@ -9,7 +9,7 @@
 	class="layout"
 	style="background: {$page.url.pathname === '/'
 		? "url('/landingPage/landing-page-bkg.png') no-repeat center center/cover"
-		: 'var(--secondary-color'}"
+		: 'var(--secondary-color)'}"
 >
 	<Navbar />
 	<div class="children">

@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<h2>serverss</h2>
+<h2>servers</h2>
