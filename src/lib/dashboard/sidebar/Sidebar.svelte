@@ -2,6 +2,7 @@
 	import DashboardIcon from './icons/DashboardIcon.svelte';
 	import CalendarIcon from './icons/CalendarIcon.svelte';
 	import AddIcon from './icons/AddIcon.svelte';
+	import SettingsIcon from './icons/SettingsIcon.svelte';
 
 	let whichLinkHover: string = '';
 </script>
@@ -68,17 +69,23 @@
 			</li>
 		</ul>
 	</div>
-	<div class="bottom" />
+	<div class="bottom">
+		<SettingsIcon />
+		<p>Settings</p>
+	</div>
 </div>
 
 <style lang="scss">
 	.parent {
 		border-right: 0.5px solid var(--dark-white-color);
 		height: 100%;
+		padding: 0 60px;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 
 		.top {
-			padding: 0 60px;
-
 			display: flex;
 			flex-direction: column;
 			gap: 55px;
@@ -116,6 +123,23 @@
 						}
 					}
 				}
+			}
+		}
+
+		.bottom {
+			display: flex;
+			gap: 40px;
+			align-items: center;
+
+			margin-bottom: 50px;
+
+			p {
+				color: var(--dark-white-color);
+				font-weight: bold;
+			}
+
+			&:hover {
+				cursor: not-allowed;
 			}
 		}
 	}
