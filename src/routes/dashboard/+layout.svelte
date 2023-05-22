@@ -31,7 +31,7 @@
 			padding: 50px 55px;
 
 			.children {
-				padding: 50px 100px;
+				margin-top: 50px;
 			}
 		}
 	}

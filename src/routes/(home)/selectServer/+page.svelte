@@ -21,7 +21,6 @@
 		getUser().subscribe((u) => (discordUser = u));
 
 		getSession().subscribe((s) => {
-			console.log(s);
 			session = s;
 		});
 

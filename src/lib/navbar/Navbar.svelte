@@ -4,8 +4,8 @@
 	import {
 		signIn as signInWithDiscord,
 		signOut as signOutWithDiscord,
+		getUser,
 	} from '$lib/supabase/auth';
-	import { getUser } from '$lib/supabase/auth';
 
 	let discordUser: any;
 	getUser().subscribe((u) => (discordUser = u));

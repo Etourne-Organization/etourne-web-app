@@ -1,12 +1,29 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	import { signOut as signOutWithDiscord, getUser } from '../../supabase/auth';
+
+	let discordUser: any;
+	getUser().subscribe((u) => (discordUser = u));
+
+	const signOut = async () => {
+		await signOutWithDiscord();
+		goto('/');
+	};
+</script>
+
 <div class="parent">
 	<div class="left">
 		<img src="/egIcon/nd-logo.png" alt="discord guild icon" />
 		<h2>Noob Dev 54 Official Server</h2>
 	</div>
 	<div class="right">
-		<img src="/egIcon/nd-logo.png" alt="discord guild icon" />
-		<p>mz10ah</p>
-		<button class="sign-out-btn">
+		<img
+			src={discordUser ? discordUser.user_metadata.avatar_url : '/icons/loading.svg'}
+			alt="discord guild icon"
+		/>
+		<p>{discordUser ? discordUser.user_metadata.full_name : 'Loading'}</p>
+		<button class="sign-out-btn" on:click={signOut}>
 			<img src="/icons/signout.svg" alt="sign out" />
 		</button>
 	</div>
@@ -16,6 +33,7 @@
 	.parent {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
 		color: var(--white-color);
 
