@@ -1,19 +1,14 @@
 <script lang="ts">
+	export let imgUrl: string;
+	export let guildName: string;
+	// export let;
+
 	import { goto } from '$app/navigation';
 
-	import { get } from 'svelte/store';
-
 	import { signOut as signOutWithDiscord, getUser } from '../../supabase/auth';
-	import { guildInfo as guildInfoStore } from '../../../store/guildStore';
 
 	let discordUser: any;
 	getUser().subscribe((u) => (discordUser = u));
-
-	const guildInfo: {
-		imgUrl?: string;
-		guildName?: string;
-		guildId?: string;
-	} = get(guildInfoStore);
 
 	const signOut = async () => {
 		await signOutWithDiscord();
@@ -23,8 +18,8 @@
 
 <div class="parent">
 	<div class="left">
-		<img src={guildInfo.imgUrl} alt="discord guild icon" />
-		<h2>{guildInfo.guildName}</h2>
+		<img src={imgUrl} alt="discord guild icon" />
+		<h2>{guildName}</h2>
 	</div>
 	<div class="right">
 		<img

@@ -6,7 +6,7 @@
 	import { goto } from '$app/navigation';
 
 	const onClick = () => {
-		goto(`/dashboard/${id}`);
+		goto(`/dashboard/${id}`, { invalidateAll: true, replaceState: true });
 	};
 </script>
 

@@ -112,6 +112,7 @@
 
 						text-decoration: none;
 						padding: 10px 5 10px 0;
+						color: var(--dark-white-color);
 
 						&:visited {
 							color: var(--dark-white-color);

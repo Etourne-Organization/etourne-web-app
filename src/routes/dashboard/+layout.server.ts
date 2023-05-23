@@ -1,8 +1,10 @@
 import { env } from '$env/dynamic/public';
 import { redirect } from '@sveltejs/kit';
 
-export const load = async ({ params }) => {
+export const load = async ({ params, fetch }) => {
 	const { id } = params;
+
+	console.log('guild request made');
 
 	let guildInfo: any;
 
