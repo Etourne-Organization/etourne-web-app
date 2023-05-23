@@ -1,7 +1,6 @@
 <script lang="ts">
 	export let imgUrl: string;
 	export let guildName: string;
-	// export let;
 
 	import { goto } from '$app/navigation';
 
