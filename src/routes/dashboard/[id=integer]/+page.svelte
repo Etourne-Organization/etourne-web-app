@@ -1,6 +1,12 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	import AddIcon from '$lib/dashboard/sidebar/icons/AddIcon.svelte';
 	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
+
+	const onCreateEventClick = () => {
+		goto('/createEvent');
+	};
 </script>
 
 <svelte:head>
@@ -38,14 +44,14 @@
 		<p class="action-title spreaded-title">actions</p>
 
 		<div class="actions">
-			<div class="action">
-				<AddIcon color="var(--white-color)" />
+			<button class="action" on:click={onCreateEventClick}>
+				<AddIcon color="var(--white-color)" width={50} height={50} />
 				<p>Create event</p>
-			</div>
-			<div class="action">
-				<AddIcon color="var(--white-color)" />
-				<p>Create event</p>
-			</div>
+			</button>
+			<button class="action">
+				<CalendarIcon color="var(--white-color)" width={50} height={50} />
+				<p>All events</p>
+			</button>
 		</div>
 	</div>
 </div>
@@ -81,11 +87,35 @@
 
 				.action {
 					display: flex;
+					align-items: center;
 					gap: 30px;
 
 					background-color: var(--light-secondary-color);
-					padding: 20px 15px;
+					padding: 25px 20px;
 					border-radius: 15px;
+					min-width: 223px;
+					border: 0;
+
+					p {
+						font-size: var(--normal-font-size);
+						color: var(--white-color);
+					}
+
+					&:hover {
+						cursor: pointer;
+						transform: translateZ(0);
+						box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+						backface-visibility: hidden;
+						-moz-osx-font-smoothing: grayscale;
+						transition-duration: 0.3s;
+						transition-property: transform;
+					}
+
+					&:hover,
+					&:focus,
+					&:active {
+						transform: scale(1.1);
+					}
 				}
 			}
 		}

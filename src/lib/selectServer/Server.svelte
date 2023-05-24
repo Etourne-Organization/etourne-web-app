@@ -10,10 +10,10 @@
 	};
 </script>
 
-<div class="parent" {id} on:click={onClick}>
+<button class="parent" {id} on:click={onClick}>
 	<img src={imgUrl} alt="server url" />
 	<p>{guildName}</p>
-</div>
+</button>
 
 <style lang="scss">
 	.parent {
@@ -22,6 +22,8 @@
 		gap: 15px;
 		align-items: center;
 		justify-content: center;
+
+		border: 0;
 
 		img {
 			border-radius: 15px;
