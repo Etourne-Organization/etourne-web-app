@@ -1,10 +1,25 @@
 <script lang="ts">
+	export let pathname: string;
+	export let guildId: string;
+
+	import { css } from '@emotion/css';
+
 	import DashboardIcon from './icons/DashboardIcon.svelte';
 	import CalendarIcon from './icons/CalendarIcon.svelte';
 	import AddIcon from './icons/AddIcon.svelte';
 	import SettingsIcon from './icons/SettingsIcon.svelte';
 
 	let whichLinkHover: string = '';
+	let color: string = 'var(--dark-white-color)';
+
+	// TODO: FIX THIS LATER
+	$: aStyle = css`
+		color: ${color};
+
+		&:visited {
+			color: ${color};
+		}
+	`;
 </script>
 
 <div class="parent">
@@ -15,16 +30,20 @@
 		<ul class="links">
 			<li>
 				<a
-					href="/dashboard/1"
+					href={`/dashboard/${guildId}`}
 					on:mouseenter={() => {
 						whichLinkHover = 'DASHBOARD';
+						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
+						color = 'var(--dark-white-color)';
 					}}
 				>
 					<DashboardIcon
-						color={whichLinkHover === 'DASHBOARD'
+						color={whichLinkHover === 'EVENTS'
+							? 'var(--white-color)'
+							: pathname.split('/').length == 3
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
@@ -33,16 +52,20 @@
 			</li>
 			<li>
 				<a
-					href="/dashboard/1"
+					href={`/dashboard/${guildId}/allEvents`}
 					on:mouseenter={() => {
 						whichLinkHover = 'EVENTS';
+						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
+						color = 'var(--dark-white-color)';
 					}}
 				>
 					<CalendarIcon
 						color={whichLinkHover === 'EVENTS'
+							? 'var(--white-color)'
+							: pathname.includes('/allEvents')
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
@@ -51,20 +74,24 @@
 			</li>
 			<li>
 				<a
-					href="/dashboard/1"
+					href={`/dashboard/${guildId}/createEvent`}
 					on:mouseenter={() => {
-						whichLinkHover = 'ADD_EVENT';
+						whichLinkHover = 'CREATE_EVENT';
+						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
+						color = 'var(--dark-white-color)';
 					}}
 				>
 					<AddIcon
-						color={whichLinkHover === 'ADD_EVENT'
+						color={whichLinkHover === 'CREATE_EVENT'
+							? 'var(--white-color)'
+							: pathname.includes('/createEvent')
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
-					Add Event</a
+					Create Event</a
 				>
 			</li>
 		</ul>

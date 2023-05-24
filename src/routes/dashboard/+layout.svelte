@@ -61,7 +61,7 @@
 
 <div class="layout">
 	<div class="left-sidebar">
-		<Sidebar />
+		<Sidebar pathname={$page.url.pathname} guildId={id} />
 	</div>
 	<div class="right">
 		<Navbar

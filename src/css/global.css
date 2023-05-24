@@ -23,12 +23,15 @@
 	src: url('/fonts/PTSans-Regular.ttf');
 }
 
-body {
+body,
+input,
+textarea {
 	font-family: 'PT sans';
 }
 
 .spreaded-title {
 	font-family: 'PT Sans';
+	color: var(--white-color);
 	font-style: normal;
 	font-weight: 700;
 	font-size: var(--normal-font-size);

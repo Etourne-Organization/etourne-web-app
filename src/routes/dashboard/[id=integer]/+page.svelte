@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	import AddIcon from '$lib/dashboard/sidebar/icons/AddIcon.svelte';
 	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
 
 	const onCreateEventClick = () => {
-		goto('/createEvent');
+		goto(`${$page.url.pathname}/createEvent`);
 	};
 </script>
 

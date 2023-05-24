@@ -24,6 +24,7 @@
 		justify-content: center;
 
 		border: 0;
+		background-color: var(--secondary-color);
 
 		img {
 			border-radius: 15px;

@@ -22,8 +22,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@emotion/css": "^11.11.0",
 		"@supabase/auth-helpers-sveltekit": "^0.9.4",
 		"@supabase/supabase-js": "^2.22.0",
+		"moment-timezone": "^0.5.43",
 		"svelte-local-storage-store": "^0.4.0"
 	}
 }
