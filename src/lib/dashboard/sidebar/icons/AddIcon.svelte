@@ -1,10 +1,12 @@
 <script lang="ts">
 	export let color: string | null = null;
+	export let width: number = 22;
+	export let height: number = 22;
 </script>
 
 <svg
-	width="22"
-	height="22"
+	{width}
+	{height}
 	viewBox="0 0 22 22"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"

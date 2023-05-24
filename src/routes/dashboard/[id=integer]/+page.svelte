@@ -1,4 +1,6 @@
 <script lang="ts">
+	import AddIcon from '$lib/dashboard/sidebar/icons/AddIcon.svelte';
+	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
 </script>
 
 <svelte:head>
@@ -32,6 +34,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="actions-div">
+		<p class="action-title spreaded-title">actions</p>
+
+		<div class="actions">
+			<div class="action">
+				<AddIcon color="var(--white-color)" />
+				<p>Create event</p>
+			</div>
+			<div class="action">
+				<AddIcon color="var(--white-color)" />
+				<p>Create event</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <style lang="scss">
@@ -50,6 +66,26 @@
 					.number {
 						font-size: var(--subheading-font-size);
 					}
+				}
+			}
+		}
+
+		.actions-div {
+			margin-top: 65px;
+
+			.actions {
+				margin-top: 25px;
+
+				display: flex;
+				gap: 40px;
+
+				.action {
+					display: flex;
+					gap: 30px;
+
+					background-color: var(--light-secondary-color);
+					padding: 20px 15px;
+					border-radius: 15px;
 				}
 			}
 		}
