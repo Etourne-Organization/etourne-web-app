@@ -1,42 +1,9 @@
 <script lang="ts">
-	import { get } from 'svelte/store';
 	import { enhance } from '$app/forms';
 
 	import moment from 'moment-timezone';
 
-	import { guildInfo as guildInfoStore } from '../../../../store/guildStore.js';
-	import { addEvent } from '$lib/supabase/supabaseFunctions/events';
-
 	let eventType: string = '';
-
-	// console.log(get(guildInfoStore));
-
-	const onSubmit = async (e: Event) => {
-		const form = e.target as HTMLFormElement;
-		const data = new FormData(form);
-
-		console.log(data);
-
-		await addEvent({
-			eventName: 'eventName',
-			gameName: 'gameName',
-			eventHost: 'mz10ah#0054',
-			description: 'eventDescription',
-			dateTime: `<t:1702383120:F>`,
-			maxNumPlayers: 0,
-			timezone: 'Africa/Abidjan',
-			maxNumTeams: 12,
-			maxNumTeamPlayers: 12,
-			discordServerId: '808385971418693652',
-			isTeamEvent: true,
-		});
-	};
-
-	/*
-		method="POST"
-		action="?/addEvent"
-		use:enhance
-	*/
 </script>
 
 <svelte:head>
