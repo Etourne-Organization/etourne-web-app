@@ -9,7 +9,7 @@
 
 	let eventType: string = '';
 
-	console.log(get(guildInfoStore));
+	// console.log(get(guildInfoStore));
 
 	const onSubmit = async (e: Event) => {
 		const form = e.target as HTMLFormElement;
@@ -45,7 +45,12 @@
 
 <div class="parent">
 	<p class="stat-title spreaded-title">create event</p>
-	<form class="create-event-form" on:submit={onSubmit}>
+	<form
+		class="create-event-form"
+		method="POST"
+		action="?/addEvent"
+		use:enhance
+	>
 		<div class="field-div event-name-field-div">
 			<label for="event-name">Event name</label>
 			<input id="event-name" type="text" name="eventName" />

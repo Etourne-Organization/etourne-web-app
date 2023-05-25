@@ -1,8 +1,6 @@
-/* 
-
-* This file contains all the 'events' table related functions
-
-*/
+/*
+ * This file contains all the 'events' table related functions
+ */
 
 import { supabase } from '../supabaseClient';
 import { checkServerExists, getServerId } from './servers';
@@ -44,54 +42,40 @@ export const addEvent = async (props: addEvent) => {
 		maxNumPlayers,
 	} = props;
 
-	console.log(props);
+	const isServerExist: boolean = await checkServerExists({
+		discordServerId: discordServerId,
+	});
+
+	let dbServerId: number;
+
+	const { data: getServerIdData, error: getServerIdError } = await getServerId(
+		{
+			discordServerId: discordServerId,
+		},
+	);
+
+	dbServerId = getServerIdData![0]['id'];
 
 	const { data, error } = await supabase
-		.from('DiscordServers')
-		// .insert([{ serverId: discordServerId, name: name }])
+		.from('Events')
+		.insert([
+			{
+				eventName: eventName,
+				eventHost: eventHost,
+				gameName: gameName,
+				description: description,
+				dateTime: dateTime,
+				isTeamEvent: isTeamEvent,
+				serverId: dbServerId,
+				timezone: timezone,
+				maxNumTeams: maxNumTeams,
+				maxNumTeamPlayers: maxNumTeamPlayers,
+				maxNumPlayers: maxNumPlayers,
+			},
+		])
 		.select();
 
-	console.log({ data, error });
+	if (error) throw error;
 
-	return { data, error };
-
-	// const isServerExist: boolean = await checkServerExists({
-	// 	discordServerId: discordServerId,
-	// });
-
-	// let dbServerId: number;
-
-	// const { data: getServerIdData, error: getServerIdError } = await getServerId(
-	// 	{
-	// 		discordServerId: discordServerId,
-	// 	},
-	// );
-
-	// console.log(getServerIdError);
-	// console.log(getServerIdData);
-
-	// dbServerId = getServerIdData![0]['id'];
-
-	// const { data, error } = await supabase
-	// 	.from('Events')
-	// 	.insert([
-	// 		{
-	// 			eventName: eventName,
-	// 			eventHost: eventHost,
-	// 			gameName: gameName,
-	// 			description: description,
-	// 			dateTime: dateTime,
-	// 			isTeamEvent: isTeamEvent,
-	// 			serverId: dbServerId,
-	// 			timezone: timezone,
-	// 			maxNumTeams: maxNumTeams,
-	// 			maxNumTeamPlayers: maxNumTeamPlayers,
-	// 			maxNumPlayers: maxNumPlayers,
-	// 		},
-	// 	])
-	// 	.select();
-
-	// if (error) throw error;
-
-	// return data[0]['id'];
+	return data;
 };

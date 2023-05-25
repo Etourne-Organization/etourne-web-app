@@ -7,7 +7,6 @@ export const actions = {
 		const formData = await request.formData();
 
 		const guildId = url.pathname.split('/')[2];
-		console.log(guildId);
 
 		const eventName: string | any = formData.get('eventName');
 		const gameName: string | any = formData.get('gameName');
@@ -24,9 +23,9 @@ export const actions = {
 			gameName: gameName,
 			eventHost: 'mz10ah#0054',
 			description: eventDescription,
-			dateTime: `<t:${momentTimezone
-				.tz(dateTime, 'DD/MM/YYYY hh:mm', timezone)
-				.unix()}:F>`,
+			dateTime: new Date(
+				momentTimezone.tz(dateTime, 'DD/MM/YYYY hh:mm', timezone).format(),
+			).toISOString(),
 			maxNumPlayers: maxNumPlayers,
 			timezone: timezone,
 			maxNumTeams: maxNumTeams,
