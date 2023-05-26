@@ -26,10 +26,10 @@ export const actions = {
 			dateTime: new Date(
 				momentTimezone.tz(dateTime, 'DD/MM/YYYY hh:mm', timezone).format(),
 			).toISOString(),
-			maxNumPlayers: maxNumPlayers,
+			maxNumPlayers: parseInt(maxNumPlayers),
 			timezone: timezone,
-			maxNumTeams: maxNumTeams,
-			maxNumTeamPlayers: maxNumTeamPlayers,
+			maxNumTeams: parseInt(maxNumTeams),
+			maxNumTeamPlayers: parseInt(maxNumTeamPlayers),
 			discordServerId: guildId,
 			isTeamEvent: maxNumTeamPlayers ? true : false,
 		});

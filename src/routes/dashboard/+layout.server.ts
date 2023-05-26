@@ -4,8 +4,6 @@ import { redirect } from '@sveltejs/kit';
 export const load = async ({ params, fetch }) => {
 	const { id } = params;
 
-	console.log('guild request made');
-
 	let guildInfo: any;
 
 	await fetch(`https://discord.com/api/guilds/${id}`, {

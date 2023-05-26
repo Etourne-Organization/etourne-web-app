@@ -1,9 +1,21 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 
 	import moment from 'moment-timezone';
 
+	import { getUser } from '$lib/supabase/auth.js';
+
 	let eventType: string = '';
+	let required: boolean = true;
+
+	const onSubmitClick = () => {
+		getUser().subscribe((u) => {
+			if (!u) {
+				goto('/');
+			}
+		});
+	};
 </script>
 
 <svelte:head>
@@ -20,15 +32,15 @@
 	>
 		<div class="field-div event-name-field-div">
 			<label for="event-name">Event name</label>
-			<input id="event-name" type="text" name="eventName" />
+			<input id="event-name" type="text" name="eventName" {required} />
 		</div>
 		<div class="field-div game-name-field-div">
 			<label for="game-name">Game name</label>
-			<input id="game-name" type="text" name="gameName" />
+			<input id="game-name" type="text" name="gameName" {required} />
 		</div>
 		<div class="field-div timezone-field-div">
 			<label for="timezone">Timezone</label>
-			<select name="timezone" id="timezone">
+			<select name="timezone" id="timezone" {required}>
 				{#each moment.tz.names() as tz}
 					<option value={tz}>{tz}</option>
 				{/each}
@@ -36,19 +48,29 @@
 		</div>
 		<div class="field-div date-time-field-div">
 			<label for="date-time">Date (Format: DD/MM/YY HOUR:MINUTE)</label>
-			<input id="date-time" type="text" name="dateTime" />
+			<input id="date-time" type="text" name="dateTime" {required} />
 		</div>
 		<div class="field-div event-type-field-div">
 			<label for="event-type">Event type</label>
-			<select name="eventType" id="event-type" bind:value={eventType}>
-				<option value="no-team">No team (regular)</option>
+			<select
+				name="eventType"
+				id="event-type"
+				bind:value={eventType}
+				{required}
+			>
+				<option selected value="no-team">No team (regular)</option>
 				<option value="team">Team</option>
 			</select>
 
 			{#if eventType === 'team'}
 				<div class="field-div max-num-teams-field-div">
 					<label for="max-num-teams">Set max num of teams</label>
-					<input id="max-num-teams" type="number" name="maxNumTeams" />
+					<input
+						id="max-num-teams"
+						type="number"
+						name="maxNumTeams"
+						placeholder="Defaults to unlimited"
+					/>
 				</div>
 				<div class="field-div max-num-team-players-field-div">
 					<label for="max-num-team-players"
@@ -58,12 +80,18 @@
 						id="max-num-team-players"
 						type="number"
 						name="maxNumTeamPlayers"
+						placeholder="Defaults to unlimited"
 					/>
 				</div>
 			{:else}
 				<div class="field-div max-num-players-field-div">
 					<label for="max-num-players">Set max num of players</label>
-					<input id="max-num-players" type="number" name="maxNumPlayers" />
+					<input
+						id="max-num-players"
+						type="number"
+						name="maxNumPlayers"
+						placeholder="Defaults to unlimited"
+					/>
 				</div>
 			{/if}
 		</div>
@@ -71,7 +99,13 @@
 			<label for="event-description">Event description</label>
 			<textarea id="event-description" name="eventDescription" />
 		</div>
-		<input id="submit-btn" type="submit" name="submit" value="Create event" />
+		<input
+			id="submit-btn"
+			type="submit"
+			name="submit"
+			value="Create event"
+			on:click={onSubmitClick}
+		/>
 	</form>
 </div>
 
