@@ -8,14 +8,6 @@
 
 	let eventType: string = '';
 	let required: boolean = true;
-
-	const onSubmitClick = () => {
-		getUser().subscribe((u) => {
-			if (!u) {
-				goto('/');
-			}
-		});
-	};
 </script>
 
 <svelte:head>
@@ -28,7 +20,16 @@
 		class="create-event-form"
 		method="POST"
 		action="?/addEvent"
-		use:enhance
+		use:enhance={({ cancel }) => {
+			// calling `cancel()` will prevent the submission
+			getUser().subscribe((u) => {
+				if (!u) {
+					console.log('not signed in');
+					cancel();
+					goto('/');
+				}
+			});
+		}}
 	>
 		<div class="field-div event-name-field-div">
 			<label for="event-name">Event name</label>
@@ -99,13 +100,7 @@
 			<label for="event-description">Event description</label>
 			<textarea id="event-description" name="eventDescription" />
 		</div>
-		<input
-			id="submit-btn"
-			type="submit"
-			name="submit"
-			value="Create event"
-			on:click={onSubmitClick}
-		/>
+		<input id="submit-btn" type="submit" name="submit" value="Create event" />
 	</form>
 </div>
 
