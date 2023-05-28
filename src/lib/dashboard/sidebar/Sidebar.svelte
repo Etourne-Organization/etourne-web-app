@@ -3,11 +3,13 @@
 	export let guildId: string;
 
 	import { css } from '@emotion/css';
+	import { get } from 'svelte/store';
 
 	import DashboardIcon from './icons/DashboardIcon.svelte';
 	import CalendarIcon from './icons/CalendarIcon.svelte';
 	import AddIcon from './icons/AddIcon.svelte';
 	import SettingsIcon from './icons/SettingsIcon.svelte';
+	import { activePage } from '../../../store/sidebarStore';
 
 	let whichLinkHover: string = '';
 	let color: string = 'var(--dark-white-color)';
@@ -31,14 +33,18 @@
 			<li>
 				<a
 					href={`/dashboard/${guildId}`}
-					on:mouseenter={() => {
+					on:mousedown={() => {
 						whichLinkHover = 'DASHBOARD';
-						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
-						color = 'var(--dark-white-color)';
 					}}
+					on:click={() => {
+						activePage.set({ value: 'DASHBOARD' });
+					}}
+					style="color: {get(activePage).value === 'DASHBOARD'
+						? 'var(--white-color)'
+						: 'var(--dark-white-color)'}"
 				>
 					<DashboardIcon
 						color={whichLinkHover === 'EVENTS'
@@ -55,11 +61,12 @@
 					href={`/dashboard/${guildId}/allEvents`}
 					on:mouseenter={() => {
 						whichLinkHover = 'EVENTS';
-						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
-						color = 'var(--dark-white-color)';
+					}}
+					on:click={() => {
+						activePage.set({ value: 'ALL_EVENTS' });
 					}}
 				>
 					<CalendarIcon
@@ -77,11 +84,12 @@
 					href={`/dashboard/${guildId}/createEvent`}
 					on:mouseenter={() => {
 						whichLinkHover = 'CREATE_EVENT';
-						color = 'var(--white-color)';
 					}}
 					on:mouseleave={() => {
 						whichLinkHover = '';
-						color = 'var(--dark-white-color)';
+					}}
+					on:click={() => {
+						activePage.set({ value: 'CREATE_EVENT' });
 					}}
 				>
 					<AddIcon
