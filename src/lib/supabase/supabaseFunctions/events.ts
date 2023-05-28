@@ -5,7 +5,7 @@
 import { supabase } from '../supabaseClient';
 import { checkServerExists, getServerId } from './servers';
 
-interface getEvents {
+interface getAllEvents {
 	discordServerId: string;
 }
 
@@ -25,7 +25,26 @@ interface addEvent {
 	maxNumPlayers?: number;
 }
 
-export const getEvents = (props: getEvents) => {};
+export const getAllEvents = async (props: getAllEvents) => {
+	const { discordServerId } = props;
+
+	const { data: getServerIdData, error: getServerIdError } = await getServerId(
+		{
+			discordServerId: discordServerId,
+		},
+	);
+
+	if (getServerIdError) throw getServerIdError;
+
+	const { data, error } = await supabase
+		.from('Events')
+		.select('*')
+		.eq('serverId', getServerIdData![0]['id']);
+
+	if (error) throw error;
+
+	return data;
+};
 
 export const addEvent = async (props: addEvent) => {
 	const {
@@ -46,7 +65,7 @@ export const addEvent = async (props: addEvent) => {
 		discordServerId: discordServerId,
 	});
 
-	let dbServerId: number;
+	// let dbServerId: number;
 
 	const { data: getServerIdData, error: getServerIdError } = await getServerId(
 		{
@@ -54,7 +73,7 @@ export const addEvent = async (props: addEvent) => {
 		},
 	);
 
-	dbServerId = getServerIdData![0]['id'];
+	// dbServerId = getServerIdData![0]['id'];
 
 	const { data, error } = await supabase
 		.from('Events')
@@ -66,7 +85,7 @@ export const addEvent = async (props: addEvent) => {
 				description: description,
 				dateTime: dateTime,
 				isTeamEvent: isTeamEvent,
-				serverId: dbServerId,
+				serverId: getServerIdData![0]['id'],
 				timezone: timezone,
 				maxNumTeams: maxNumTeams,
 				maxNumTeamPlayers: maxNumTeamPlayers,

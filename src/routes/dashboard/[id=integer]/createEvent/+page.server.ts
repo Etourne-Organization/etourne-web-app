@@ -6,7 +6,7 @@ export const actions = {
 	addEvent: async ({ request, url }) => {
 		const formData = await request.formData();
 
-		const guildId = url.pathname.split('/')[2];
+		const guildId: string = url.pathname.split('/')[2];
 
 		const eventName: string | any = formData.get('eventName');
 		const gameName: string | any = formData.get('gameName');

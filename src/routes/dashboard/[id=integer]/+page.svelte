@@ -8,6 +8,10 @@
 	const onCreateEventClick = () => {
 		goto(`${$page.url.pathname}/createEvent`);
 	};
+
+	const onAllEventsClick = () => {
+		goto(`${$page.url.pathname}/allEvents`);
+	};
 </script>
 
 <svelte:head>
@@ -49,7 +53,7 @@
 				<AddIcon color="var(--white-color)" width={50} height={50} />
 				<p>Create event</p>
 			</button>
-			<button class="action">
+			<button class="action" on:click={onAllEventsClick}>
 				<CalendarIcon color="var(--white-color)" width={50} height={50} />
 				<p>All events</p>
 			</button>

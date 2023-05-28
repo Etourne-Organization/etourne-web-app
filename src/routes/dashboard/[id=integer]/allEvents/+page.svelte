@@ -1,3 +1,11 @@
+<script lang="ts">
+	export let data;
+
+	const { allEvents } = data;
+
+	console.log(new Date(allEvents[0]['dateTime']).getDate());
+</script>
+
 <svelte:head>
 	<title>Dashboard | All Events</title>
 </svelte:head>
@@ -21,56 +29,29 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Event 1</td>
-				<td>Fall Guys</td>
-				<td>Etc/GMT</td>
-				<td>12/12/2023 12:12</td>
-				<td>12</td>
-				<td>10</td>
-				<td>13</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Event 1</td>
-				<td>Fall Guys</td>
-				<td>Etc/GMT</td>
-				<td>12/12/2023 12:12</td>
-				<td>12</td>
-				<td>10</td>
-				<td>13</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Event 1</td>
-				<td>Fall Guys</td>
-				<td>Etc/GMT</td>
-				<td>12/12/2023 12:12</td>
-				<td>12</td>
-				<td>10</td>
-				<td>13</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Event 1</td>
-				<td>Fall Guys</td>
-				<td>Etc/GMT</td>
-				<td>12/12/2023 12:12</td>
-				<td>12</td>
-				<td>10</td>
-				<td>13</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Event 1</td>
-				<td>Fall Guys</td>
-				<td>Etc/GMT</td>
-				<td>12/12/2023 12:12</td>
-				<td>12</td>
-				<td>10</td>
-				<td>13</td>
-			</tr>
+			{#each allEvents as aE}
+				<tr>
+					<td>{aE.id}</td>
+					<td>{aE.eventName}</td>
+					<td>{aE.gameName}</td>
+					<td>{aE.timezone}</td>
+					<td
+						>{`${new Date(aE.dateTime).getDate()}/${
+							new Date(aE.dateTime).getMonth() + 1
+						}/${new Date(aE.dateTime).getFullYear()} ${new Date(
+							aE.dateTime,
+						).getHours()} ${
+							new Date(aE.dateTime).getMinutes().toString().length ===
+								1 && new Date(aE.dateTime).getMinutes() === 0
+								? '00'
+								: new Date(aE.dateTime).getMinutes()
+						}`}</td
+					>
+					<td>{aE.maNumPlayers ? aE.maNumPlayers : '-'}</td>
+					<td>{aE.maxNumTeams ? aE.maxNumTeams : '-'}</td>
+					<td>{aE.maxNumTeamPlayers ? aE.maxNumTeamPlayers : '-'}</td>
+				</tr>
+			{/each}
 		</tbody>
 	</table>
 </div>
