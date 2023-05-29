@@ -33,7 +33,7 @@
 			<li>
 				<a
 					href={`/dashboard/${guildId}`}
-					on:mousedown={() => {
+					on:mouseenter={() => {
 						whichLinkHover = 'DASHBOARD';
 					}}
 					on:mouseleave={() => {
@@ -42,14 +42,11 @@
 					on:click={() => {
 						activePage.set({ value: 'DASHBOARD' });
 					}}
-					style="color: {get(activePage).value === 'DASHBOARD'
-						? 'var(--white-color)'
-						: 'var(--dark-white-color)'}"
 				>
 					<DashboardIcon
-						color={whichLinkHover === 'EVENTS'
+						color={whichLinkHover === 'DASHBOARD'
 							? 'var(--white-color)'
-							: pathname.split('/').length == 3
+							: get(activePage).value === 'DASHBOARD'
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
@@ -72,7 +69,7 @@
 					<CalendarIcon
 						color={whichLinkHover === 'EVENTS'
 							? 'var(--white-color)'
-							: pathname.includes('/allEvents')
+							: get(activePage).value === 'ALL_EVENTS'
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
@@ -95,7 +92,7 @@
 					<AddIcon
 						color={whichLinkHover === 'CREATE_EVENT'
 							? 'var(--white-color)'
-							: pathname.includes('/createEvent')
+							: get(activePage).value === 'CREATE_EVENT'
 							? 'var(--white-color)'
 							: 'var(--dark-white-color)'}
 					/>
@@ -140,6 +137,10 @@
 					color: var(--dark-white-color);
 					font-weight: bold;
 
+					.active {
+						color: var(--white-color);
+					}
+
 					a {
 						display: flex;
 						gap: 20px;
@@ -147,7 +148,6 @@
 
 						text-decoration: none;
 						padding: 10px 5 10px 0;
-						color: var(--dark-white-color);
 
 						&:visited {
 							color: var(--dark-white-color);

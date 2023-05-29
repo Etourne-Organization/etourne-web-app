@@ -2,8 +2,6 @@
 	export let data;
 
 	const { allEvents } = data;
-
-	console.log(new Date(allEvents[0]['dateTime']).getDate());
 </script>
 
 <svelte:head>
