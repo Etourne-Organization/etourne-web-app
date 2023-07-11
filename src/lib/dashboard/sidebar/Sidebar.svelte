@@ -1,8 +1,6 @@
 <script lang="ts">
-	export let pathname: string;
 	export let guildId: string;
 
-	import { css } from '@emotion/css';
 	import { get } from 'svelte/store';
 
 	import DashboardIcon from './icons/DashboardIcon.svelte';
@@ -12,16 +10,8 @@
 	import { activePage } from '../../../store/sidebarStore';
 
 	let whichLinkHover: string = '';
-	let color: string = 'var(--dark-white-color)';
-
-	// TODO: FIX THIS LATER
-	$: aStyle = css`
-		color: ${color};
-
-		&:visited {
-			color: ${color};
-		}
-	`;
+	// ** THIS IS NEEDED to make the sidebar link go white when it is active
+	let temp: string = get(activePage).value;
 </script>
 
 <div class="parent">
@@ -41,7 +31,10 @@
 					}}
 					on:click={() => {
 						activePage.set({ value: 'DASHBOARD' });
+
+						temp = 'DASHBOARD';
 					}}
+					class:selected={temp === 'DASHBOARD'}
 				>
 					<DashboardIcon
 						color={whichLinkHover === 'DASHBOARD'
@@ -64,7 +57,10 @@
 					}}
 					on:click={() => {
 						activePage.set({ value: 'ALL_EVENTS' });
+
+						temp = get(activePage).value;
 					}}
+					class:selected={temp === 'ALL_EVENTS'}
 				>
 					<CalendarIcon
 						color={whichLinkHover === 'EVENTS'
@@ -87,7 +83,10 @@
 					}}
 					on:click={() => {
 						activePage.set({ value: 'CREATE_EVENT' });
+
+						temp = get(activePage).value;
 					}}
+					class:selected={temp === 'CREATE_EVENT'}
 				>
 					<AddIcon
 						color={whichLinkHover === 'CREATE_EVENT'
@@ -134,11 +133,13 @@
 				gap: 40px;
 
 				li {
-					color: var(--dark-white-color);
 					font-weight: bold;
 
-					.active {
-						color: var(--white-color);
+					.selected {
+						&:link,
+						&:visited {
+							color: var(--white-color);
+						}
 					}
 
 					a {
@@ -149,8 +150,12 @@
 						text-decoration: none;
 						padding: 10px 5 10px 0;
 
-						&:visited {
+						&:visited,
+						&:link {
 							color: var(--dark-white-color);
+						}
+
+						&:visited {
 							text-decoration: none;
 						}
 
