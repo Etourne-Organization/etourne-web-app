@@ -25,6 +25,10 @@ interface addEvent {
 	maxNumPlayers?: number;
 }
 
+interface getNumEventsCreateInServer {
+	discordServerId: string;
+}
+
 export const getAllEvents = async (props: getAllEvents) => {
 	const { discordServerId } = props;
 
@@ -97,4 +101,27 @@ export const addEvent = async (props: addEvent) => {
 	if (error) throw error;
 
 	return data;
+};
+
+export const getNumEventsCreateInServer = async (
+	props: getNumEventsCreateInServer,
+) => {
+	const { discordServerId } = props;
+
+	const { data: getServerIdData, error: getServerIdError } = await getServerId(
+		{
+			discordServerId: discordServerId,
+		},
+	);
+
+	if (getServerIdError) throw getServerIdError;
+
+	const { data, error } = await supabase
+		.from('Events')
+		.select('*')
+		.eq('serverId', getServerIdData![0]['id']);
+
+	if (error) throw error;
+
+	return data.length;
 };
