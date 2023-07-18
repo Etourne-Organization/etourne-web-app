@@ -1,6 +1,10 @@
 <script lang="ts">
 	export let data;
-	const { numEventsCreated, numRegisteredPlayers } = data;
+	const {
+		numEventsCreated,
+		numRegisteredSinglePlayers,
+		numRegisteredTeamPlayers,
+	} = data;
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -26,9 +30,10 @@
 	<Statistics
 		{numEventsCreated}
 		numEventsActive={numEventsCreated}
-		numEventsFinished={0}
-		numEventsCancelled={10}
-		{numRegisteredPlayers}
+		numEventsFinished={'-'}
+		numEventsCancelled={'-'}
+		numRegisteredPlayers={numRegisteredSinglePlayers +
+			numRegisteredTeamPlayers}
 	/>
 	<div class="actions-div">
 		<p class="action-title spreaded-title">actions</p>

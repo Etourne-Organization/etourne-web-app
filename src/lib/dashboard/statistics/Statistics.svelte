@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let numEventsCreated: number;
-	export let numEventsActive: number;
-	export let numEventsFinished: number;
-	export let numEventsCancelled: number;
-	export let numRegisteredPlayers: number;
+	export let numEventsCreated: number | string;
+	export let numEventsActive: number | string;
+	export let numEventsFinished: number | string;
+	export let numEventsCancelled: number | string;
+	export let numRegisteredPlayers: number | string;
 </script>
 
 <div class="parent">

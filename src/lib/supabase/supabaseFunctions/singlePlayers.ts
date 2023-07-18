@@ -3,37 +3,25 @@
  */
 
 import { supabase } from '../supabaseClient';
-import { checkServerExists, getServerId } from './servers';
-import { getAllEvents } from './events';
+import { getAllEventsByServerId } from './events';
 
-interface getNumRegisterPlayersInServer {
+interface getNumRegisteredSinglePlayersInServer {
 	discordServerId: string;
 }
 
-export const getNumRegisterPlayersInServer = async (
-	props: getNumRegisterPlayersInServer,
+export const getNumRegisteredSinglePlayersInServer = async (
+	props: getNumRegisteredSinglePlayersInServer,
 ) => {
 	const { discordServerId } = props;
 
-	const { data: getServerIdData, error: getServerIdError } = await getServerId(
-		{
-			discordServerId: discordServerId,
-		},
-	);
+	const allEvents = await getAllEventsByServerId({
+		discordServerId: discordServerId,
+	});
 
-	if (getServerIdError) throw getServerIdError;
-
-	const { data: eventsData, error: eventsError } = await supabase
-		.from('Events')
-		.select('id')
-		.eq('serverId', getServerIdData![0]['id']);
-
-	if (eventsError) throw eventsError;
-
-	if (eventsData.length > 0) {
+	if (allEvents.length > 0) {
 		const eventIds: [number?] = [];
 
-		eventsData.forEach((e) => eventIds.push(e.id));
+		allEvents.forEach((e) => eventIds.push(e.id));
 
 		const { data, error } = await supabase
 			.from('SinglePlayers')
@@ -46,6 +34,4 @@ export const getNumRegisterPlayersInServer = async (
 	} else {
 		return 0;
 	}
-
-	return 1;
 };
