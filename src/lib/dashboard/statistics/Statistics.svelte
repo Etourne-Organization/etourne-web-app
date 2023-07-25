@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let numEventsCreated: number | string;
-	export let numEventsActive: number | string;
+	export let numEventsCreated: number;
+	export let numEventsActive: number;
 	export let numEventsFinished: number | string;
 	export let numEventsCancelled: number | string;
-	export let numRegisteredPlayers: number | string;
+	export let numRegisteredPlayers: number;
 </script>
 
 <div class="parent">
@@ -12,11 +12,19 @@
 	<div class="stats">
 		<div class="stat">
 			<h2 class="number">{numEventsCreated}</h2>
-			<p class="description">Events created</p>
+			<p class="description">
+				{numEventsCreated === 1 || numEventsCreated === 0
+					? 'Event'
+					: 'Events'} created
+			</p>
 		</div>
 		<div class="stat">
 			<h2 class="number">{numEventsActive}</h2>
-			<p class="description">Events active</p>
+			<p class="description">
+				{numEventsActive === 1 || numEventsActive === 0
+					? 'Event'
+					: 'Events'} active
+			</p>
 		</div>
 		<div class="stat">
 			<h2 class="number">{numEventsFinished}</h2>
@@ -28,7 +36,11 @@
 		</div>
 		<div class="stat">
 			<h2 class="number">{numRegisteredPlayers}</h2>
-			<p class="description">Registered players</p>
+			<p class="description">
+				Registered {numRegisteredPlayers === 1 || numRegisteredPlayers === 0
+					? 'player'
+					: 'players'}
+			</p>
 		</div>
 	</div>
 </div>
