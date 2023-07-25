@@ -10,6 +10,8 @@
 	import { page } from '$app/stores';
 	import Statistics from '$lib/dashboard/statistics/Statistics.svelte';
 
+	import { Toaster } from 'svelte-french-toast';
+
 	import AddIcon from '$lib/dashboard/sidebar/icons/AddIcon.svelte';
 	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
 
@@ -27,6 +29,7 @@
 </svelte:head>
 
 <div class="parent">
+	<Toaster />
 	<Statistics
 		{numEventsCreated}
 		numEventsActive={numEventsCreated}

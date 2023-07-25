@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 
 	import moment from 'moment-timezone';
+	import toast, { Toaster } from 'svelte-french-toast';
 
 	import { getUser } from '$lib/supabase/auth.js';
 
@@ -15,6 +16,7 @@
 </svelte:head>
 
 <div class="parent">
+	<Toaster />
 	<p class="stat-title spreaded-title">create event</p>
 	<form
 		class="create-event-form"
@@ -29,6 +31,25 @@
 					goto('/');
 				}
 			});
+
+			console.log('processing');
+			const toastId = toast.loading('Working on it...');
+
+			return async ({ result }) => {
+				console.log(result);
+				// `result` is an `ActionResult` object
+				if (result.type === 'success') {
+					toast.success('Event created successfully!', {
+						id: toastId,
+						duration: 5000,
+					});
+				} else if (result.type === 'error') {
+					toast.error('Event creation failed!', {
+						id: toastId,
+						duration: 5000,
+					});
+				}
+			};
 		}}
 	>
 		<div class="field-div event-name-field-div">
