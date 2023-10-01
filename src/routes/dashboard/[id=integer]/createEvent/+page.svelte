@@ -9,6 +9,13 @@
 
 	let eventType: string = '';
 	let required: boolean = true;
+	let user: any; // TODO: assign type to this
+
+	getUser().subscribe((u) => {
+		if (u) {
+			user = u;
+		}
+	});
 </script>
 
 <svelte:head>
@@ -43,7 +50,7 @@
 						id: toastId,
 						duration: 5000,
 					});
-				} else if (result.type === 'error') {
+				} else {
 					toast.error('Event creation failed!', {
 						id: toastId,
 						duration: 5000,
@@ -117,6 +124,14 @@
 				</div>
 			{/if}
 		</div>
+		<input
+			id="event-host"
+			type="text"
+			name="eventHost"
+			required
+			hidden
+			value={user && user.user_metadata.name}
+		/>
 		<div class="field-div event-description-div">
 			<label for="event-description">Event description</label>
 			<textarea id="event-description" name="eventDescription" />

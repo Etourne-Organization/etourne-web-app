@@ -14,7 +14,6 @@ export const load = async ({ params, fetch }) => {
 	})
 		.then((res) => res.json())
 		.then((res) => {
-			// console.log(res);
 			guildInfo = res;
 		})
 		.catch((err) => console.log(err));

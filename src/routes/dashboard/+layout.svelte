@@ -20,7 +20,6 @@
 		let discordUser: any;
 		let session: any;
 
-		// if (guildInfo.id) {
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -28,7 +27,6 @@
 			guildName: guildInfo.name,
 			guildId: id,
 		});
-		// }
 
 		getUser().subscribe((u) => (discordUser = u));
 
@@ -40,7 +38,6 @@
 			goto('/');
 		}
 
-		// if (guildInfo.id) {
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -48,7 +45,6 @@
 			guildName: guildInfo.name,
 			guildId: id,
 		});
-		// }
 
 		if (session) {
 			if (!session.provider_token) {

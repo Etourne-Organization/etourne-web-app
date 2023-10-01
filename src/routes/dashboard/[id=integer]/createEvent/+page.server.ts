@@ -15,6 +15,7 @@ export const actions = {
 			const gameName: string | any = formData.get('gameName');
 			const timezone: string | any = formData.get('timezone');
 			const dateTime: string | any = formData.get('dateTime');
+			const eventHost: string | any = formData.get('eventHost');
 			const eventType: string | any = formData.get('eventType');
 			const maxNumPlayers: number | any = formData.get('maxNumPlayers');
 			const maxNumTeams: number | any = formData.get('maxNumTeams');
@@ -26,7 +27,7 @@ export const actions = {
 			await addEvent({
 				eventName: eventName,
 				gameName: gameName,
-				eventHost: 'mz10ah#0054',
+				eventHost: eventHost,
 				description: eventDescription,
 				dateTime: new Date(
 					momentTimezone
@@ -38,7 +39,7 @@ export const actions = {
 				maxNumTeams: parseInt(maxNumTeams),
 				maxNumTeamPlayers: parseInt(maxNumTeamPlayers),
 				discordServerId: guildId,
-				isTeamEvent: maxNumTeamPlayers ? true : false,
+				isTeamEvent: eventType === 'team' ? true : false,
 			});
 		} catch (err) {
 			return fail(500, { err });
