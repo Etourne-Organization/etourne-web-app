@@ -6,24 +6,13 @@
 </script>
 
 <div
-	class="layout"
+	class="layout h-screen overflow-y-scroll"
 	style="background: {$page.url.pathname === '/'
 		? "url('/landingPage/landing-page-bkg.png') no-repeat center center/cover"
 		: 'var(--secondary-color)'}"
 >
 	<Navbar />
-	<div class="children">
+	<div class="children py-12 px-24">
 		<slot />
 	</div>
 </div>
-
-<style lang="scss">
-	.layout {
-		height: 100vh;
-		overflow-y: scroll;
-
-		.children {
-			padding: 50px 100px;
-		}
-	}
-</style>
