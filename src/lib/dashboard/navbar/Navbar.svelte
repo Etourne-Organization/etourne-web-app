@@ -15,77 +15,27 @@
 	};
 </script>
 
-<div class="parent">
-	<div class="left">
-		<img src={imgUrl} alt="discord guild icon" />
-		<h2>{guildName}</h2>
+<div class="flex justify-between items-center text-white">
+	<div class="flex gap-6 items-center">
+		<img class="w-[100px]" src={imgUrl} alt="discord guild icon" />
+		<h2 class="text-sub-heading">{guildName}</h2>
 	</div>
-	<div class="right">
+	<div class="flex items-center gap-5">
 		<img
 			src={discordUser
 				? discordUser.user_metadata.avatar_url
 				: '/icons/loading.svg'}
 			alt="discord guild icon"
+			class="w-[50px]"
 		/>
-		<p>{discordUser ? discordUser.user_metadata.full_name : 'Loading'}</p>
-		<button class="sign-out-btn" on:click={signOut}>
-			<img src="/icons/signout.svg" alt="sign out" />
+		<p class="text-normal font-bold">
+			{discordUser ? discordUser.user_metadata.full_name : 'Loading'}
+		</p>
+		<button
+			class="bg-none border-0 ml-5 hover:cursor-pointer"
+			on:click={signOut}
+		>
+			<img class="w-12" src="/icons/signout.svg" alt="sign out" />
 		</button>
 	</div>
 </div>
-
-<style lang="scss">
-	.parent {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		color: var(--white-color);
-
-		.left {
-			display: flex;
-			gap: 25px;
-			align-items: center;
-
-			h2 {
-				font-size: var(--subheading-font-size);
-			}
-
-			img {
-				width: 100px;
-				border-radius: 50%;
-			}
-		}
-
-		.right {
-			display: flex;
-			gap: 20px;
-			align-items: center;
-
-			p {
-				font-size: var(--normal-font-size);
-				font-weight: bold;
-			}
-
-			img {
-				width: 50px;
-				border-radius: 50%;
-			}
-
-			.sign-out-btn {
-				background: none;
-				border: none;
-
-				margin-left: 20px;
-
-				img {
-					width: 50px;
-				}
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-	}
-</style>
