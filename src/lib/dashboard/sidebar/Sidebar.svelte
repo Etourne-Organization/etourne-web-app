@@ -14,14 +14,17 @@
 	let temp: string = get(activePage).value;
 </script>
 
-<div class="parent">
-	<div class="top">
-		<div class="logo">
+<div
+	class="flex flex-col justify-between border-r-[0.5px] border-r-dark-white border-solid h-full px-[60px]"
+>
+	<div class="flex flex-col gap-14">
+		<div class="mt-[60px]">
 			<img src="/logo/et-logo.svg" alt="" />
 		</div>
-		<ul class="links">
-			<li>
+		<ul class="flex flex-col gap-12 list-none">
+			<li class="font-bold">
 				<a
+					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white"
 					href={`/dashboard/${guildId}`}
 					on:mouseenter={() => {
 						whichLinkHover = 'DASHBOARD';
@@ -34,7 +37,8 @@
 
 						temp = 'DASHBOARD';
 					}}
-					class:selected={temp === 'DASHBOARD'}
+					class:text-white={temp === 'DASHBOARD'}
+					class:visited:text-white={temp === 'DASHBOARD'}
 				>
 					<DashboardIcon
 						color={whichLinkHover === 'DASHBOARD'
@@ -46,8 +50,9 @@
 					Dashboard
 				</a>
 			</li>
-			<li>
+			<li class="font-bold">
 				<a
+					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white"
 					href={`/dashboard/${guildId}/allEvents`}
 					on:mouseenter={() => {
 						whichLinkHover = 'EVENTS';
@@ -60,7 +65,8 @@
 
 						temp = get(activePage).value;
 					}}
-					class:selected={temp === 'ALL_EVENTS'}
+					class:text-white={temp === 'ALL_EVENTS'}
+					class:visited:text-white={temp === 'ALL_EVENTS'}
 				>
 					<CalendarIcon
 						color={whichLinkHover === 'EVENTS'
@@ -72,8 +78,9 @@
 					Events</a
 				>
 			</li>
-			<li>
+			<li class="font-bold">
 				<a
+					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white"
 					href={`/dashboard/${guildId}/createEvent`}
 					on:mouseenter={() => {
 						whichLinkHover = 'CREATE_EVENT';
@@ -86,7 +93,8 @@
 
 						temp = get(activePage).value;
 					}}
-					class:selected={temp === 'CREATE_EVENT'}
+					class:text-white={temp === 'CREATE_EVENT'}
+					class:visited:text-white={temp === 'CREATE_EVENT'}
 				>
 					<AddIcon
 						color={whichLinkHover === 'CREATE_EVENT'
@@ -100,88 +108,8 @@
 			</li>
 		</ul>
 	</div>
-	<div class="bottom">
+	<div class="flex gap-10 items-center mb-12">
 		<SettingsIcon />
-		<p>Settings</p>
+		<p class="text-dark-white font-bold hover:cursor-not-allowed">Settings</p>
 	</div>
 </div>
-
-<style lang="scss">
-	.parent {
-		border-right: 0.5px solid var(--dark-white-color);
-		height: 100%;
-		padding: 0 60px;
-
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-
-		.top {
-			display: flex;
-			flex-direction: column;
-			gap: 55px;
-
-			.logo {
-				margin-top: 60px;
-			}
-
-			ul {
-				list-style: none;
-
-				display: flex;
-				flex-direction: column;
-				gap: 40px;
-
-				li {
-					font-weight: bold;
-
-					.selected {
-						&:link,
-						&:visited {
-							color: var(--white-color);
-						}
-					}
-
-					a {
-						display: flex;
-						gap: 20px;
-						align-items: center;
-
-						text-decoration: none;
-						padding: 10px 5 10px 0;
-
-						&:visited,
-						&:link {
-							color: var(--dark-white-color);
-						}
-
-						&:visited {
-							text-decoration: none;
-						}
-
-						&:hover {
-							color: var(--white-color);
-						}
-					}
-				}
-			}
-		}
-
-		.bottom {
-			display: flex;
-			gap: 40px;
-			align-items: center;
-
-			margin-bottom: 50px;
-
-			p {
-				color: var(--dark-white-color);
-				font-weight: bold;
-			}
-
-			&:hover {
-				cursor: not-allowed;
-			}
-		}
-	}
-</style>
