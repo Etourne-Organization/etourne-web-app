@@ -16,6 +16,9 @@ export default {
 				white: '#f6f6f6',
 				'dark-white': '#939393',
 			},
+			fontFamily: {
+				'pt-sans': ['PT sans'],
+			},
 		},
 	},
 	plugins: [],

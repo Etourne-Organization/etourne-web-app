@@ -1039,6 +1039,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+lucide@^0.292.0:
+  version "0.292.0"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.292.0.tgz#ff1558abbf73bdf991de1b0e4469d83c2ab23881"
+  integrity sha512-30r4YbM6nfLiDNzS/YSFLNt/g98XIxBfFwtxF9yYJNpYyAq+iwQx8kM6MWxnh21WuQSkAbEQyru46y5IbCoUjw==
+
 magic-string@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.27.0.tgz#e4a3413b4bab6d98d2becffd48b4a257effdbbf3"
@@ -1327,6 +1332,11 @@ regenerator-runtime@^0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
   integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
+
+remixicon@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/remixicon/-/remixicon-3.5.0.tgz#ad3ea8e6cd80d6bc7a9a261fafc229f04a32ce5f"
+  integrity sha512-wNzWGKf4frb3tEmgvP5shry0n1OdTjjEk9RHLuRuAhfA50bvEdpKH1XWNUYrHUSjAQQkkdyIm+lf4mOuysIKTQ==
 
 resolve-from@^4.0.0:
   version "4.0.0"

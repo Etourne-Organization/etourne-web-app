@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="layout h-screen overflow-y-scroll"
+	class="layout h-screen overflow-y-scroll font-pt-sans"
 	style="background: {$page.url.pathname === '/'
 		? "url('/landingPage/landing-page-bkg.png') no-repeat center center/cover"
 		: 'var(--secondary-color)'}"
