@@ -47,18 +47,20 @@
 	<title>Etourne - Select Server</title>
 </svelte:head>
 
-<div class="parent">
-	<div class="top">
+<div>
+	<div class="flex gap-9">
 		<img src="/icons/server.svg" alt="" />
-		<h1 class="title">Servers</h1>
+		<h1 class="text-heading text-white">Servers</h1>
 	</div>
-	<p class="text">
+	<p class="text-normal text-white mt-5">
 		Servers you and Etourne bot is in. Please select a server.
 	</p>
 	{#if isLoading}
-		<p class="loading-text">Loading ...</p>
+		<p class="text-normal text-white mt-5">Loading ...</p>
 	{:else}
-		<ul class="server-list">
+		<ul
+			class="mt-12 grid grid-cols-1 md:grid-cols-5 auto-rows-min gap-y-10 gap-x-7"
+		>
 			{#each guilds as g}
 				<Server
 					id={g.id}
@@ -71,39 +73,3 @@
 		</ul>
 	{/if}
 </div>
-
-<style lang="scss">
-	.parent {
-		.top {
-			display: flex;
-			gap: 35px;
-
-			.title {
-				font-size: var(--heading-font-size);
-				color: var(--white-color);
-			}
-		}
-
-		.loading-text {
-			font-size: var(--normal-font-size);
-			color: var(--white-color);
-			margin-top: 20px;
-		}
-
-		.text {
-			font-size: var(--normal-font-size);
-			color: var(--white-color);
-			margin-top: 20px;
-		}
-
-		.server-list {
-			margin-top: 50px;
-
-			display: grid;
-			grid-template-columns: repeat(5, auto);
-			grid-column-gap: 40px;
-			grid-row-gap: 30px;
-			/* grid-auto-columns: auto; */
-		}
-	}
-</style>

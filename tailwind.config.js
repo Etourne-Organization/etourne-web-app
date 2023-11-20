@@ -4,9 +4,9 @@ export default {
 	theme: {
 		extend: {
 			fontSize: {
-				heading: '3.8rem',
-				'sub-heading': '2.2rem',
-				normal: '1.2rem',
+				heading: '3.8rem', // text-6xl
+				'sub-heading': '2.2rem', // text-3xl
+				normal: '1.2rem', // text-xl
 			},
 			colors: {
 				primary: '#3a9ce2',
