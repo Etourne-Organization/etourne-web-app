@@ -20,100 +20,46 @@
 	};
 </script>
 
-<div class="navbar">
-	<img src="/logo/etourne-letter-logo.svg" alt="" />
-	<div class="right">
-		<ul class="nav-list">
-			<li class="nav-li-link">
-				<a href="/selectServer" class="link">Dashboard</a>
+<div class="flex justify-between items-center py-12 px-[100px]">
+	<img src="/logo/etourne-letter-logo.svg" alt="etourne logo" />
+	<div class="flex items-center justify-between gap-20">
+		<ul class="list-none flex items-center gap-16">
+			<li>
+				<a
+					href="/selectServer"
+					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
+					>Dashboard</a
+				>
 			</li>
-			<li class="nav-li-link">
-				<a href="/" class="link">About</a>
+			<li>
+				<a
+					href="/"
+					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
+					>About</a
+				>
 			</li>
-			<li class="nav-li-link">
-				<a href="/" class="link">Add Bot</a>
+			<li>
+				<a
+					href="/"
+					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
+					>Add Bot</a
+				>
 			</li>
 		</ul>
 		{#if !discordUser}
-			<button class="sign-in-btn" on:click={signIn}>
+			<button
+				class="flex gap-5 items-center text-normal font-bold bg-primary text-white border-0 rounded-2xl py-4 px-7"
+				on:click={signIn}
+			>
 				<img src="/icons/discord-logo.svg" alt="discord logo" /> Sign In
 			</button>
 		{:else}
-			<button class="sign-out-btn" on:click={signOut}>
-				<img src="/icons/signout.svg" alt="sign out" />
+			<button
+				class="bg-none border-0 hover:cursor-pointer"
+				on:click={signOut}
+			>
+				<img class="w-[50px]" src="/icons/signout.svg" alt="sign out" />
 			</button>
 		{/if}
 	</div>
 </div>
-
-<style lang="scss">
-	.navbar {
-		padding: 50px 100px;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		.right {
-			display: flex;
-			align-items: center;
-			gap: 80px;
-
-			ul {
-				list-style: none;
-
-				display: flex;
-				align-items: center;
-				gap: 65px;
-
-				a {
-					color: var(--white-color);
-					text-decoration: none;
-					font-size: var(--normal-font-size);
-					font-weight: bold;
-
-					&:visited {
-						color: var(--white-color);
-						text-decoration: none;
-					}
-
-					&:hover {
-						color: var(--primary-color);
-					}
-				}
-			}
-
-			.sign-in-btn {
-				background-color: var(--primary-color);
-				color: var(--white-color);
-				border: 0;
-				border-radius: 15px;
-				padding: 15px 30px;
-
-				display: flex;
-				gap: 20px;
-				align-items: center;
-				font-size: var(--normal-font-size);
-				font-weight: bold;
-
-				&:hover {
-					cursor: pointer;
-					filter: brightness(0.95);
-				}
-			}
-
-			.sign-out-btn {
-				background: none;
-				border: none;
-
-				img {
-					width: 50px;
-				}
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-	}
-</style>
