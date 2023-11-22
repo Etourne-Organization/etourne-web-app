@@ -9,9 +9,9 @@
 <div class="parent">
 	<p class="stat-title spreaded-title">statistics</p>
 
-	<div class="stats">
-		<div class="stat">
-			<h2 class="number">{numEventsCreated}</h2>
+	<div class="flex items-center gap-12">
+		<div>
+			<h2 class="text-sub-heading">{numEventsCreated}</h2>
 			<p class="description">
 				{numEventsCreated === 1 || numEventsCreated === 0
 					? 'Event'
@@ -19,7 +19,7 @@
 			</p>
 		</div>
 		<div class="stat">
-			<h2 class="number">{numEventsActive}</h2>
+			<h2 class="text-sub-heading">{numEventsActive}</h2>
 			<p class="description">
 				{numEventsActive === 1 || numEventsActive === 0
 					? 'Event'
@@ -27,15 +27,15 @@
 			</p>
 		</div>
 		<div class="stat">
-			<h2 class="number">{numEventsFinished}</h2>
+			<h2 class="text-sub-heading">{numEventsFinished}</h2>
 			<p class="description">Events finished</p>
 		</div>
 		<div class="stat">
-			<h2 class="number">{numEventsCancelled}</h2>
+			<h2 class="text-sub-heading">{numEventsCancelled}</h2>
 			<p class="description">Events cancelled</p>
 		</div>
 		<div class="stat">
-			<h2 class="number">{numRegisteredPlayers}</h2>
+			<h2 class="text-sub-heading">{numRegisteredPlayers}</h2>
 			<p class="description">
 				Registered {numRegisteredPlayers === 1 || numRegisteredPlayers === 0
 					? 'player'
@@ -44,19 +44,3 @@
 		</div>
 	</div>
 </div>
-
-<style lang="scss">
-	.stats {
-		margin-top: 25px;
-
-		display: flex;
-		align-items: center;
-		gap: 50px;
-
-		.stat {
-			.number {
-				font-size: var(--subheading-font-size);
-			}
-		}
-	}
-</style>
