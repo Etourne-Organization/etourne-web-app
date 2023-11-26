@@ -28,7 +28,7 @@
 	<title>Dashboard</title>
 </svelte:head>
 
-<div class="parent">
+<div class="text-white">
 	<Toaster />
 	<Statistics
 		{numEventsCreated}
@@ -38,68 +38,24 @@
 		numRegisteredPlayers={numRegisteredSinglePlayers +
 			numRegisteredTeamPlayers}
 	/>
-	<div class="actions-div">
-		<p class="action-title spreaded-title">actions</p>
+	<div class="mt-16">
+		<p class="spreaded-title">actions</p>
 
-		<div class="actions">
-			<button class="action" on:click={onCreateEventClick}>
+		<div class="flex gap-10 mt-6">
+			<button
+				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-2xl min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
+				on:click={onCreateEventClick}
+			>
 				<AddIcon color="var(--white-color)" width={50} height={50} />
-				<p>Create event</p>
+				<p class="text-normal text-white">Create event</p>
 			</button>
-			<button class="action" on:click={onAllEventsClick}>
+			<button
+				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-2xl min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
+				on:click={onAllEventsClick}
+			>
 				<CalendarIcon color="var(--white-color)" width={50} height={50} />
-				<p>All events</p>
+				<p class="text-normal text-white">All events</p>
 			</button>
 		</div>
 	</div>
 </div>
-
-<style lang="scss">
-	.parent {
-		color: var(--white-color);
-
-		.actions-div {
-			margin-top: 65px;
-
-			.actions {
-				margin-top: 25px;
-
-				display: flex;
-				gap: 40px;
-
-				.action {
-					display: flex;
-					align-items: center;
-					gap: 30px;
-
-					background-color: var(--light-secondary-color);
-					padding: 25px 20px;
-					border-radius: 15px;
-					min-width: 223px;
-					border: 0;
-
-					p {
-						font-size: var(--normal-font-size);
-						color: var(--white-color);
-					}
-
-					&:hover {
-						cursor: pointer;
-						transform: translateZ(0);
-						box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-						backface-visibility: hidden;
-						-moz-osx-font-smoothing: grayscale;
-						transition-duration: 0.3s;
-						transition-property: transform;
-					}
-
-					&:hover,
-					&:focus,
-					&:active {
-						transform: scale(1.1);
-					}
-				}
-			}
-		}
-	}
-</style>
