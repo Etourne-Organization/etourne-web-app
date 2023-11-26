@@ -55,38 +55,19 @@
 	});
 </script>
 
-<div class="layout">
+<div class="flex h-screen bg-secondary">
 	<div class="left-sidebar">
 		<Sidebar guildId={id} />
 	</div>
-	<div class="right">
+	<div class="overflow-y-scroll w-full px-12 py-14">
 		<Navbar
 			imgUrl={guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
 				: '/icons/null-image.svg'}
 			guildName={guildInfo.name}
 		/>
-		<div class="children">
+		<div class="mt-12">
 			<slot />
 		</div>
 	</div>
 </div>
-
-<style lang="scss">
-	.layout {
-		height: 100vh;
-		background: var(--secondary-color);
-
-		display: flex;
-
-		.right {
-			overflow-y: scroll;
-			width: 100%;
-			padding: 50px 55px;
-
-			.children {
-				margin-top: 50px;
-			}
-		}
-	}
-</style>
