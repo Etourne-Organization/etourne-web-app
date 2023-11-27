@@ -21,17 +21,22 @@ export default {
 			},
 		},
 	},
-	plugins: [
-		// plugin(function ({ matchUtilities, theme }) {
-		// 	matchUtilities(
-		// 		{
-		// 			'translate-z': (value) => ({
-		// 				'--tw-translate-z': value,
-		// 				transform: ` translate3d(var(--tw-translate-x), var(--tw-translate-y), var(--tw-translate-z)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))`,
-		// 			}), // this is actual CSS
-		// 		},
-		// 		{ values: theme('translate'), supportsNegativeValues: true },
-		// 	);
-		// }),
-	],
+	daisyui: {
+		themes: [
+			{
+				mytheme: {
+					primary: '#3a9ce2',
+					secondary: '#1b1f24',
+					accent: '#ffffff',
+					neutral: '#ffffff',
+					'base-100': '#313539',
+					info: '#ffffff',
+					success: '#00ffff',
+					warning: '#ffffff',
+					error: '#ffffff',
+				},
+			},
+		],
+	},
+	plugins: [require('daisyui')],
 };

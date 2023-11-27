@@ -8,10 +8,10 @@
 	<title>Dashboard | All Events</title>
 </svelte:head>
 
-<div class="parent">
+<div>
 	<p class="stat-title spreaded-title">all events</p>
 
-	<table class="all-events-table">
+	<table class="table table-zebra mt-10">
 		<thead>
 			<tr>
 				<th class="col" id="id-col">ID</th>
@@ -53,98 +53,3 @@
 		</tbody>
 	</table>
 </div>
-
-<style lang="scss">
-	.parent {
-		.all-events-table {
-			margin-top: 40px;
-			color: var(--white-color);
-			border-collapse: collapse;
-
-			tr {
-				border-radius: 15px;
-
-				td,
-				th {
-					text-align: left;
-					padding-top: 15px;
-					padding-bottom: 15px;
-				}
-
-				th {
-					max-width: 120px;
-				}
-
-				td:nth-child(1),
-				th:nth-child(1) {
-					padding-left: 20px;
-					min-width: 50px;
-				}
-
-				td:nth-child(2),
-				th:nth-child(2) {
-					padding-left: 20px;
-					padding-right: 20px;
-					min-width: 60px;
-				}
-
-				td:nth-child(3),
-				th:nth-child(3) {
-					padding-left: 20px;
-					padding-right: 20px;
-					min-width: 60px;
-				}
-
-				td:nth-child(4),
-				th:nth-child(4) {
-					padding-left: 10px;
-					padding-right: 10px;
-					min-width: 60px;
-				}
-
-				td:nth-child(5),
-				th:nth-child(5) {
-					padding-left: 20px;
-					padding-right: 20px;
-					min-width: 60px;
-				}
-
-				td:nth-child(6),
-				th:nth-child(6) {
-					padding-left: 10px;
-					padding-right: 10px;
-					min-width: 60px;
-				}
-
-				td:nth-child(7),
-				th:nth-child(7) {
-					padding-left: 10px;
-					padding-right: 10px;
-					min-width: 60px;
-				}
-
-				td:nth-child(8),
-				th:nth-child(8) {
-					padding-right: 20px;
-				}
-
-				td:first-child {
-					border-top-left-radius: 10px;
-					border-bottom-left-radius: 10px;
-				}
-				td:last-child {
-					border-bottom-right-radius: 10px;
-					border-top-right-radius: 10px;
-				}
-			}
-
-			tbody {
-				margin-top: 10px;
-
-				tr:nth-child(odd) {
-					background: var(--light-secondary-color);
-				}
-			}
-		}
-	}
-</style>
