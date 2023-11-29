@@ -9,34 +9,34 @@
 <div class="parent">
 	<p class="stat-title spreaded-title">statistics</p>
 
-	<div class="flex items-center gap-12">
+	<div class="flex items-center gap-12 mt-3">
 		<div>
 			<h2 class="text-sub-heading">{numEventsCreated}</h2>
-			<p class="description">
+			<p>
 				{numEventsCreated === 1 || numEventsCreated === 0
 					? 'Event'
 					: 'Events'} created
 			</p>
 		</div>
-		<div class="stat">
+		<div>
 			<h2 class="text-sub-heading">{numEventsActive}</h2>
-			<p class="description">
+			<p>
 				{numEventsActive === 1 || numEventsActive === 0
 					? 'Event'
 					: 'Events'} active
 			</p>
 		</div>
-		<div class="stat">
+		<div>
 			<h2 class="text-sub-heading">{numEventsFinished}</h2>
-			<p class="description">Events finished</p>
+			<p>Events finished</p>
 		</div>
-		<div class="stat">
+		<div>
 			<h2 class="text-sub-heading">{numEventsCancelled}</h2>
-			<p class="description">Events cancelled</p>
+			<p>Events cancelled</p>
 		</div>
-		<div class="stat">
+		<div>
 			<h2 class="text-sub-heading">{numRegisteredPlayers}</h2>
-			<p class="description">
+			<p>
 				Registered {numRegisteredPlayers === 1 || numRegisteredPlayers === 0
 					? 'player'
 					: 'players'}
