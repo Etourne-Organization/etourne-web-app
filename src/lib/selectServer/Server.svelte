@@ -10,48 +10,11 @@
 	};
 </script>
 
-<button class="parent" {id} on:click={onClick}>
-	<img src={imgUrl} alt="server url" />
-	<p>{guildName}</p>
+<button
+	class="flex flex-col gap-4 items-center justify-center border-0 bg-secondary hover:cursor-pointer hover:shadow-sm hover:scale-110 active:scale-110 focus:scale-110 hover:duration-300"
+	{id}
+	on:click={onClick}
+>
+	<img class="rounded-[15px]" src={imgUrl} alt="server url" />
+	<p class="text-normal text-white text-center">{guildName}</p>
 </button>
-
-<style lang="scss">
-	.parent {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-		align-items: center;
-		justify-content: center;
-
-		border: 0;
-		background-color: var(--secondary-color);
-
-		img {
-			border-radius: 15px;
-			width: 170px;
-			/* object-fit: cover; */
-		}
-
-		p {
-			font-size: var(--normal-font-size);
-			color: var(--white-color);
-			text-align: center;
-		}
-
-		&:hover {
-			cursor: pointer;
-			transform: translateZ(0);
-			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-			backface-visibility: hidden;
-			-moz-osx-font-smoothing: grayscale;
-			transition-duration: 0.3s;
-			transition-property: transform;
-		}
-
-		&:hover,
-		&:focus,
-		&:active {
-			transform: scale(1.1);
-		}
-	}
-</style>
