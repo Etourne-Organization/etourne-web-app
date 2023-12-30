@@ -27,29 +27,33 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each allEvents as aE}
-				<tr>
-					<td>{aE.id}</td>
-					<td>{aE.eventName}</td>
-					<td>{aE.gameName}</td>
-					<td>{aE.timezone}</td>
-					<td
-						>{`${new Date(aE.dateTime).getDate()}/${
-							new Date(aE.dateTime).getMonth() + 1
-						}/${new Date(aE.dateTime).getFullYear()} ${new Date(
-							aE.dateTime,
-						).getHours()} ${
-							new Date(aE.dateTime).getMinutes().toString().length ===
-								1 && new Date(aE.dateTime).getMinutes() === 0
-								? '00'
-								: new Date(aE.dateTime).getMinutes()
-						}`}</td
-					>
-					<td>{aE.maNumPlayers ? aE.maNumPlayers : '-'}</td>
-					<td>{aE.maxNumTeams ? aE.maxNumTeams : '-'}</td>
-					<td>{aE.maxNumTeamPlayers ? aE.maxNumTeamPlayers : '-'}</td>
-				</tr>
-			{/each}
+			{#if allEvents.length > 0}
+				{#each allEvents as aE}
+					<tr>
+						<td>{aE.id}</td>
+						<td>{aE.eventName}</td>
+						<td>{aE.gameName}</td>
+						<td>{aE.timezone}</td>
+						<td
+							>{`${new Date(aE.dateTime).getDate()}/${
+								new Date(aE.dateTime).getMonth() + 1
+							}/${new Date(aE.dateTime).getFullYear()} ${new Date(
+								aE.dateTime,
+							).getHours()} ${
+								new Date(aE.dateTime).getMinutes().toString().length ===
+									1 && new Date(aE.dateTime).getMinutes() === 0
+									? '00'
+									: new Date(aE.dateTime).getMinutes()
+							}`}</td
+						>
+						<td>{aE.maNumPlayers ? aE.maNumPlayers : '-'}</td>
+						<td>{aE.maxNumTeams ? aE.maxNumTeams : '-'}</td>
+						<td>{aE.maxNumTeamPlayers ? aE.maxNumTeamPlayers : '-'}</td>
+					</tr>
+				{/each}
+			{:else}
+				<p>There are no events created...</p>
+			{/if}
 		</tbody>
 	</table>
 </div>
