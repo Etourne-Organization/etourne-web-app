@@ -18,6 +18,7 @@ export const load = async ({ params, fetch }) => {
 		})
 		.catch((err) => console.log(err));
 
+	/* if the bot isn't in the server, then redirect to invite the bot to the server */
 	if (!guildInfo.id) {
 		throw redirect(
 			308,
