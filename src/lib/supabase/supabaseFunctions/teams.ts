@@ -1,6 +1,7 @@
 /*
  * This file contains all the 'teams' table related functions
- */
+
+*/
 
 import { supabase } from '../supabaseClient';
 
