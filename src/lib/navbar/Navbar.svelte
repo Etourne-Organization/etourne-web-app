@@ -24,13 +24,15 @@
 	<img src="/logo/etourne-letter-logo.svg" alt="etourne logo" />
 	<div class="flex items-center justify-between gap-20">
 		<ul class="list-none flex items-center gap-16">
-			<li>
-				<a
-					href="/select-server"
-					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
-					>Dashboard</a
-				>
-			</li>
+			{#if discordUser}
+				<li>
+					<a
+						href="/select-server"
+						class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
+						>Dashboard</a
+					>
+				</li>
+			{/if}
 			<li>
 				<a
 					href="/"
