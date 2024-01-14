@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let data;
 
+	import { DropdownMenu } from 'bits-ui';
+
 	const { allEvents } = data;
 </script>
 
@@ -24,6 +26,7 @@
 				<th class="col" id="max-num-team-players-col">
 					Max Num of Team Players
 				</th>
+				<th class="col"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,9 +49,34 @@
 									: new Date(aE.dateTime).getMinutes()
 							}`}</td
 						>
-						<td>{aE.maNumPlayers ? aE.maNumPlayers : '-'}</td>
+						<td>{aE.maxNumPlayers ? aE.maxNumPlayers : '-'}</td>
 						<td>{aE.maxNumTeams ? aE.maxNumTeams : '-'}</td>
 						<td>{aE.maxNumTeamPlayers ? aE.maxNumTeamPlayers : '-'}</td>
+						<td>
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger
+									class="h-10 w-10 items-center justify-center rounded-md transition-transform hover:bg-light-secondary"
+								>
+									<i class="ri-more-2-fill text-white text-2xl"></i>
+								</DropdownMenu.Trigger>
+
+								<DropdownMenu.Content
+									class="w-full max-w-[150px] rounded-md bg-black px-1 py-1.5 shadow-lg"
+								>
+									<DropdownMenu.Item
+										class="h-10 flex items-center rounded-md py-3 px-3 font-medium hover:cursor-pointer hover:bg-[#343434]"
+									>
+										Edit
+									</DropdownMenu.Item>
+
+									<DropdownMenu.Item
+										class="h-10 flex items-center rounded-md py-3 px-3 font-medium hover:cursor-pointer hover:bg-[#343434]"
+									>
+										Delete
+									</DropdownMenu.Item>
+								</DropdownMenu.Content>
+							</DropdownMenu.Root>
+						</td>
 					</tr>
 				{/each}
 			{:else}

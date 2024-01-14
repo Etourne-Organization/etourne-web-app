@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 
+	import 'remixicon/fonts/remixicon.css';
+
 	import Navbar from '$lib/navbar/Navbar.svelte';
 	import '../../css/global.css';
 </script>

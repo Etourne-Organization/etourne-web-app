@@ -7,6 +7,8 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
+	import 'remixicon/fonts/remixicon.css';
+
 	import { getUser, getSession, signOut } from '$lib/supabase/auth';
 	import Sidebar from '$lib/dashboard/sidebar/Sidebar.svelte';
 	import Navbar from '$lib/dashboard/navbar/Navbar.svelte';
