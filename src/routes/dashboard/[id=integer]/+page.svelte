@@ -16,11 +16,11 @@
 	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
 
 	const onCreateEventClick = () => {
-		goto(`${$page.url.pathname}/createEvent`);
+		goto(`${$page.url.pathname}/create-event`);
 	};
 
 	const onAllEventsClick = () => {
-		goto(`${$page.url.pathname}/allEvents`);
+		goto(`${$page.url.pathname}/all-events`);
 	};
 </script>
 

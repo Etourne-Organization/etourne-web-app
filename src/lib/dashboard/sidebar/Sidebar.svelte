@@ -44,8 +44,8 @@
 						color={whichLinkHover === 'DASHBOARD'
 							? 'var(--white-color)'
 							: get(activePage).value === 'DASHBOARD'
-							? 'var(--white-color)'
-							: 'var(--dark-white-color)'}
+								? 'var(--white-color)'
+								: 'var(--dark-white-color)'}
 					/>
 					Dashboard
 				</a>
@@ -53,7 +53,7 @@
 			<li class="font-bold">
 				<a
 					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white"
-					href={`/dashboard/${guildId}/allEvents`}
+					href={`/dashboard/${guildId}/all-events`}
 					on:mouseenter={() => {
 						whichLinkHover = 'EVENTS';
 					}}
@@ -72,8 +72,8 @@
 						color={whichLinkHover === 'EVENTS'
 							? 'var(--white-color)'
 							: get(activePage).value === 'ALL_EVENTS'
-							? 'var(--white-color)'
-							: 'var(--dark-white-color)'}
+								? 'var(--white-color)'
+								: 'var(--dark-white-color)'}
 					/>
 					Events</a
 				>
@@ -81,7 +81,7 @@
 			<li class="font-bold">
 				<a
 					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white"
-					href={`/dashboard/${guildId}/createEvent`}
+					href={`/dashboard/${guildId}/create-event`}
 					on:mouseenter={() => {
 						whichLinkHover = 'CREATE_EVENT';
 					}}
@@ -100,8 +100,8 @@
 						color={whichLinkHover === 'CREATE_EVENT'
 							? 'var(--white-color)'
 							: get(activePage).value === 'CREATE_EVENT'
-							? 'var(--white-color)'
-							: 'var(--dark-white-color)'}
+								? 'var(--white-color)'
+								: 'var(--dark-white-color)'}
 					/>
 					Create Event</a
 				>
