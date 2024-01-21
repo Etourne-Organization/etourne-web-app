@@ -37,6 +37,10 @@ interface getNumEventsCreateInServer {
 	discordServerId: string;
 }
 
+interface deletEvent {
+	eventId: number;
+}
+
 export const getAllEvents = async (props: getAllEvents) => {
 	const { discordServerId } = props;
 
@@ -177,4 +181,17 @@ export const getNumEventsCreateInServer = async (
 	if (error) throw error;
 
 	return data.length;
+};
+
+export const deleteEvent = async (props: deletEvent) => {
+	const { eventId } = props;
+
+	const { data, error } = await supabase
+		.from('Events')
+		.delete()
+		.eq('id', eventId);
+
+	if (error) throw error;
+
+	return { data, error };
 };
