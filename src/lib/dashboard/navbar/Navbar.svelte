@@ -9,6 +9,8 @@
 	let discordUser: any;
 	getUser().subscribe((u) => (discordUser = u));
 
+	console.log(discordUser);
+
 	const signOut = async () => {
 		await signOutWithDiscord();
 		goto('/');

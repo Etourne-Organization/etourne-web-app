@@ -2,11 +2,9 @@
 	export let eventId: number;
 	export let isDialogOpen: boolean;
 
-	console.log(isDialogOpen);
-
 	import { fade } from 'svelte/transition';
 
-	import { Dialog, Separator, Label, DropdownMenu, Button } from 'bits-ui';
+	import { Dialog, Separator } from 'bits-ui';
 </script>
 
 <Dialog.Root bind:open={isDialogOpen}>
