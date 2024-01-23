@@ -1734,10 +1734,10 @@ svelte-hmr@^0.15.3:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.3.tgz#df54ccde9be3f091bf5f18fc4ef7b8eb6405fbe6"
   integrity sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==
 
-svelte-local-storage-store@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/svelte-local-storage-store/-/svelte-local-storage-store-0.6.4.tgz#db9ec637035a496efceb9c436f6f8d3977e33b2d"
-  integrity sha512-45WoY2vSGPQM1sIQJ9jTkPPj20hYeqm+af6mUGRFSPP5WglZf36YYoZqwmZZ8Dt/2SU8lem+BTA8/Z/8TkqNLg==
+svelte-persisted-store@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/svelte-persisted-store/-/svelte-persisted-store-0.9.0.tgz#68b6dfc1d0b85082ee0df8a50bd6417036430d76"
+  integrity sha512-GoK160xYmwBX0AiZDrh7AvdapcI8xCjb8r5xyWX+eJL2iw8o6xIxqjTHSmrrhUgOWj7rYc8EXiRMf9U9ryaGVg==
 
 svelte-preprocess@^5.1.0:
   version "5.1.1"
