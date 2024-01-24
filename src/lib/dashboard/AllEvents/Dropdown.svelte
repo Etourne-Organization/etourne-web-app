@@ -34,7 +34,8 @@
 			}}
 		>
 			<DropdownMenu.Item
-				class="h-10 flex items-center gap-2 rounded-md py-3 px-3 font-medium hover:cursor-pointer hover:bg-[#343434]"
+				class="h-10 flex items-center gap-2 rounded-md py-3 px-3 font-medium hover:cursor-not-allowed hover:bg-[#343434]"
+				disabled
 			>
 				<i class="ri-edit-2-fill" />
 				Edit
