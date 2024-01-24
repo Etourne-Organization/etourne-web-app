@@ -1,14 +1,16 @@
 <script lang="ts">
 	export let eventId: number;
 
-	import { DropdownMenu, Dialog, Separator } from 'bits-ui';
+	import { slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+
+	import { DropdownMenu } from 'bits-ui';
 	import DeleteConfirmationDialog from './DeleteConfirmationDialog.svelte';
 
 	let isDialogOpen: boolean = false;
 
 	const onDeleteButtonClick = () => {
 		isDialogOpen = true;
-		console.log(isDialogOpen);
 	};
 </script>
 
@@ -24,6 +26,12 @@
 			class="w-full max-w-[150px] rounded-md bg-black px-1 py-1.5 shadow-lg"
 			align="end"
 			sideOffset={3}
+			transition={slide}
+			transitionConfig={{
+				duration: 300,
+				easing: quintOut,
+				axis: 'y',
+			}}
 		>
 			<DropdownMenu.Item
 				class="h-10 flex items-center gap-2 rounded-md py-3 px-3 font-medium hover:cursor-pointer hover:bg-[#343434]"
