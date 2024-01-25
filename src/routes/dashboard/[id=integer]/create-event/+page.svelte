@@ -6,10 +6,16 @@
 	import toast, { Toaster } from 'svelte-french-toast';
 
 	import { getUser } from '$lib/supabase/auth.js';
+	import {
+		getSortedNormalizedTimezoneNames,
+		getTimezoneValue,
+	} from '$lib/utilities/timezone';
 
 	let eventType: string = '';
 	let required: boolean = true;
 	let user: any; // TODO: assign type to this
+
+	console.log(getSortedNormalizedTimezoneNames());
 
 	getUser().subscribe((u) => {
 		if (u) {
