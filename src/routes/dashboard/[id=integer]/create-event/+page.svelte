@@ -8,14 +8,17 @@
 	import { getUser } from '$lib/supabase/auth.js';
 	import {
 		getSortedNormalizedTimezoneNames,
-		getTimezoneValue,
+		getTimezoneLabelValue,
 	} from '$lib/utilities/timezone';
 
 	let eventType: string = '';
 	let required: boolean = true;
 	let user: any; // TODO: assign type to this
 
-	console.log(getSortedNormalizedTimezoneNames());
+	const tzNames: Array<{ label: string; value: string }> =
+		getSortedNormalizedTimezoneNames().map((timezone: string) =>
+			getTimezoneLabelValue(timezone),
+		);
 
 	getUser().subscribe((u) => {
 		if (u) {
@@ -93,15 +96,15 @@
 				id="timezone"
 				{required}
 			>
-				{#each moment.tz.names() as tz}
-					<option value={tz}>{tz}</option>
+				{#each tzNames as tz}
+					<option value={tz.value}>{tz.label}</option>
 				{/each}
 			</select>
 		</div>
 		<div class="flex flex-col gap-[10px]">
-			<label class="text-white" for="date-time"
-				>Date (Format: DD/MM/YY HOUR:MINUTE)</label
-			>
+			<label class="text-white" for="date-time">
+				Date (Format: DD/MM/YY HOUR:MINUTE)
+			</label>
 			<input
 				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
 				id="date-time"

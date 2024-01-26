@@ -13,7 +13,7 @@ export const getTimzoneValueFromLabel = (label: string) => {
 	*/
 
 	const tzs = getSortedNormalizedTimezoneNames().map((tz) =>
-		getTimezoneValue(tz),
+		getTimezoneLabelValue(tz),
 	);
 
 	return tzs.filter((tz) => tz.label === label.trim())[0]['value'];
@@ -54,7 +54,7 @@ export const getTimezoneLabel = (timezone: string): string => {
 	return transformGmtZoneName(timezone);
 };
 
-export const getTimezoneValue = (timezone: string) => ({
+export const getTimezoneLabelValue = (timezone: string) => ({
 	value: timezone,
 	label: getTimezoneLabel(timezone),
 });
