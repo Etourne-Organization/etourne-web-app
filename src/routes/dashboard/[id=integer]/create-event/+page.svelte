@@ -2,8 +2,8 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 
-	import moment from 'moment-timezone';
 	import toast, { Toaster } from 'svelte-french-toast';
+	import { DateInput } from 'date-picker-svelte';
 
 	import { getUser } from '$lib/supabase/auth.js';
 	import {
@@ -25,6 +25,8 @@
 			user = u;
 		}
 	});
+
+	let date = new Date();
 </script>
 
 <svelte:head>
@@ -113,6 +115,8 @@
 				{required}
 			/>
 		</div>
+		<DateInput bind:value={date} />
+
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-type">Event type</label>
 			<select
