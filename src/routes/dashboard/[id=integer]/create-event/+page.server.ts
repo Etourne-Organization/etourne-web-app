@@ -30,9 +30,7 @@ export const actions = {
 				eventHost: eventHost,
 				description: eventDescription,
 				dateTime: new Date(
-					momentTimezone
-						.tz(dateTime, 'DD/MM/YYYY hh:mm', timezone)
-						.format(),
+					momentTimezone.tz(dateTime, timezone).format(),
 				).toISOString(),
 				maxNumPlayers: parseInt(maxNumPlayers),
 				timezone: timezone,

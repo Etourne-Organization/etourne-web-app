@@ -37,3 +37,7 @@ textarea {
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 }
+
+input {
+	color-scheme: dark;
+}

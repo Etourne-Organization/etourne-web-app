@@ -3,7 +3,6 @@
 	import { goto } from '$app/navigation';
 
 	import toast, { Toaster } from 'svelte-french-toast';
-	import { DateInput } from 'date-picker-svelte';
 
 	import { getUser } from '$lib/supabase/auth.js';
 	import {
@@ -108,14 +107,13 @@
 				Date (Format: DD/MM/YY HOUR:MINUTE)
 			</label>
 			<input
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
+				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white dark:[color-scheme:dark]"
 				id="date-time"
-				type="text"
+				type="datetime-local"
 				name="dateTime"
 				{required}
 			/>
 		</div>
-		<DateInput bind:value={date} />
 
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-type">Event type</label>
