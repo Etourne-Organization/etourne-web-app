@@ -12,7 +12,7 @@
 		getTimezoneLabelValue,
 	} from '$lib/utilities/timezone';
 
-	let eventType: string = '';
+	let eventType: string = 'no-team';
 	let required: boolean = true;
 	let user: any; // TODO: assign type to this
 
@@ -99,19 +99,6 @@
 				{required}
 			/>
 		</div>
-		<!-- <div class="flex flex-col gap-[10px]">
-			<label class="text-white" for="timezone">Timezone</label>
-			<select
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
-				name="timezone"
-				id="timezone"
-				{required}
-			>
-				{#each tzNames as tz}
-					<option value={tz.value}>{tz.label}</option>
-				{/each}
-			</select>
-		</div> -->
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="timezone">Timezone</label>
 			<input
@@ -128,18 +115,21 @@
 				bind:value={timezoneInputValue}
 			/>
 			<div
-				class="card w-full max-w-sm max-h-48 p-4 overflow-y-auto"
+				class="card w-full max-w-lg bg-light-secondary max-h-48 p-4 overflow-y-auto rounded-lg"
 				tabindex="-1"
 			>
 				<Autocomplete
 					bind:input={timezoneInputLabel}
 					options={tzNames}
 					on:selection={onTimezoneSelection}
+					regionItem="p-3 hover:bg-secondary rounded-lg hover:cursor-pointer"
 				/>
 			</div>
 		</div>
 		<div class="flex flex-col gap-[10px]">
-			<label class="text-white" for="date-time">Date of the event</label>
+			<label class="text-white" for="date-time">
+				Date and time of the event
+			</label>
 			<input
 				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white dark:[color-scheme:dark]"
 				id="date-time"
