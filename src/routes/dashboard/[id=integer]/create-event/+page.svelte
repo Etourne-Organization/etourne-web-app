@@ -82,7 +82,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-name">Event name</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 				id="event-name"
 				type="text"
 				name="eventName"
@@ -92,7 +92,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="game-name">Game name</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 				id="game-name"
 				type="text"
 				name="gameName"
@@ -115,7 +115,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="timezone">Timezone</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 				type="search"
 				name="timezone-label"
 				bind:value={timezoneInputLabel}
@@ -139,11 +139,9 @@
 			</div>
 		</div>
 		<div class="flex flex-col gap-[10px]">
-			<label class="text-white" for="date-time">
-				Date (Format: DD/MM/YY HOUR:MINUTE)
-			</label>
+			<label class="text-white" for="date-time">Date of the event</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white dark:[color-scheme:dark]"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white dark:[color-scheme:dark]"
 				id="date-time"
 				type="datetime-local"
 				name="dateTime"
@@ -154,7 +152,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-type">Event type</label>
 			<select
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
+				class="select select-primary w-full max-w-lg bg-light-secondary border-0 rounded-lg text-white"
 				name="eventType"
 				id="event-type"
 				bind:value={eventType}
@@ -170,7 +168,7 @@
 						>Set max num of teams</label
 					>
 					<input
-						class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white focus:outline-none"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 						id="max-num-teams"
 						type="number"
 						name="maxNumTeams"
@@ -182,7 +180,7 @@
 						>Set max num of team players</label
 					>
 					<input
-						class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white focus:outline-none"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 						id="max-num-team-players"
 						type="number"
 						name="maxNumTeamPlayers"
@@ -195,7 +193,7 @@
 						>Set max num of players</label
 					>
 					<input
-						class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white focus:outline-none"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
 						id="max-num-players"
 						type="number"
 						name="maxNumPlayers"
@@ -218,13 +216,13 @@
 				>Event description</label
 			>
 			<textarea
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white focus:outline-none"
+				class="textarea textarea-primary bg-light-secondary border-0 rounded-lg text-white max-w-lg"
 				id="event-description"
 				name="eventDescription"
 			/>
 		</div>
 		<input
-			class="text-white mt-[10px] bg-primary border-0 rounded-2xl py-4 px-[10px] max-w-[185px] text-normal font-bold focus:outline-none hover:cursor-pointer hover:brightness-95"
+			class="btn btn-primary text-white mt-[10px] rounded-2xl max-w-sm"
 			id="submit-btn"
 			type="submit"
 			name="submit"
