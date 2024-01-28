@@ -3,6 +3,8 @@
 	import { goto } from '$app/navigation';
 
 	import toast, { Toaster } from 'svelte-french-toast';
+	import { Autocomplete } from '@skeletonlabs/skeleton';
+	import type { AutocompleteOption } from '@skeletonlabs/skeleton';
 
 	import { getUser } from '$lib/supabase/auth.js';
 	import {
@@ -25,7 +27,15 @@
 		}
 	});
 
-	let date = new Date();
+	let timezoneInputLabel: string = '';
+	let timezoneInputValue: string = '';
+
+	function onTimezoneSelection(
+		event: CustomEvent<AutocompleteOption<string>>,
+	): void {
+		timezoneInputLabel = event.detail.label;
+		timezoneInputValue = event.detail.value;
+	}
 </script>
 
 <svelte:head>
@@ -89,7 +99,7 @@
 				{required}
 			/>
 		</div>
-		<div class="flex flex-col gap-[10px]">
+		<!-- <div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="timezone">Timezone</label>
 			<select
 				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
@@ -101,6 +111,32 @@
 					<option value={tz.value}>{tz.label}</option>
 				{/each}
 			</select>
+		</div> -->
+		<div class="flex flex-col gap-[10px]">
+			<label class="text-white" for="timezone">Timezone</label>
+			<input
+				class="input"
+				type="search"
+				name="timezone-label"
+				bind:value={timezoneInputLabel}
+				placeholder="Search..."
+			/>
+			<input
+				type="hidden"
+				id="timezone-hidden"
+				name="timezone"
+				bind:value={timezoneInputValue}
+			/>
+			<div
+				class="card w-full max-w-sm max-h-48 p-4 overflow-y-auto"
+				tabindex="-1"
+			>
+				<Autocomplete
+					bind:input={timezoneInputLabel}
+					options={tzNames}
+					on:selection={onTimezoneSelection}
+				/>
+			</div>
 		</div>
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="date-time">

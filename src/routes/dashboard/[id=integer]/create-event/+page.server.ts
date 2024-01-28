@@ -24,21 +24,23 @@ export const actions = {
 			const eventDescription: string | any =
 				formData.get('eventDescription');
 
-			await addEvent({
-				eventName: eventName,
-				gameName: gameName,
-				eventHost: eventHost,
-				description: eventDescription,
-				dateTime: new Date(
-					momentTimezone.tz(dateTime, timezone).format(),
-				).toISOString(),
-				maxNumPlayers: parseInt(maxNumPlayers),
-				timezone: timezone,
-				maxNumTeams: parseInt(maxNumTeams),
-				maxNumTeamPlayers: parseInt(maxNumTeamPlayers),
-				discordServerId: guildId,
-				isTeamEvent: eventType === 'team' ? true : false,
-			});
+			console.log(timezone);
+
+			// await addEvent({
+			// 	eventName: eventName,
+			// 	gameName: gameName,
+			// 	eventHost: eventHost,
+			// 	description: eventDescription,
+			// 	dateTime: new Date(
+			// 		momentTimezone.tz(dateTime, timezone).format(),
+			// 	).toISOString(),
+			// 	maxNumPlayers: parseInt(maxNumPlayers),
+			// 	timezone: timezone,
+			// 	maxNumTeams: parseInt(maxNumTeams),
+			// 	maxNumTeamPlayers: parseInt(maxNumTeamPlayers),
+			// 	discordServerId: guildId,
+			// 	isTeamEvent: eventType === 'team' ? true : false,
+			// });
 		} catch (err) {
 			return fail(500, { err });
 		}
