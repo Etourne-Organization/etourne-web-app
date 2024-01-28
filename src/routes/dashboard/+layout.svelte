@@ -24,10 +24,10 @@
 
 	let isLoading: boolean = true;
 
-	onMount(async () => {
-		let discordUser: any;
-		let session: any;
+	let discordUser: any;
+	let session: any;
 
+	const initialChecks = async () => {
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -40,32 +40,8 @@
 
 		getSession().subscribe((s) => {
 			session = s;
+			return;
 		});
-
-		console.log(discordUser);
-
-		// TODO: check this line of script again - what does it do? Is it needed?
-		// if (!discordUser) {
-		// 	goto('/');
-		// 	return;
-		// }
-
-		// checks and add the user in DB if not in DB - this is needed to check for user role
-		// await checkAddUser({
-		// 	discordUserId: discordUser.user_metadata.provider_id,
-		// 	username: discordUser.user_metadata.full_name,
-		// 	discordServerId: id,
-		// });
-
-		// const userRole: Array<{ roleId: number }> | null = await getUserRole({
-		// 	discordUserId: discordUser.user_metadata.provider_id,
-		// 	discordServerId: id,
-		// })!;
-
-		// if (userRole && userRole[0].roleId === 1) {
-		// 	goto('/insufficient-permission');
-		// 	return;
-		// }
 
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
@@ -74,6 +50,32 @@
 			guildName: guildInfo.name,
 			guildId: id,
 		});
+	};
+
+	initialChecks();
+
+	onMount(async () => {
+		// checks and add the user in DB if not in DB - this is needed to check for user role
+		await checkAddUser({
+			discordUserId: discordUser.user_metadata.provider_id,
+			username: discordUser.user_metadata.full_name,
+			discordServerId: id,
+		});
+
+		const userRole: Array<{ roleId: number }> | null = await getUserRole({
+			discordUserId: discordUser.user_metadata.provider_id,
+			discordServerId: id,
+		})!;
+
+		if (userRole && userRole[0].roleId === 1) {
+			goto('/insufficient-permission');
+			return;
+		}
+
+		if (!discordUser) {
+			goto('/');
+			return;
+		}
 
 		if (session) {
 			if (!session.provider_token) {
