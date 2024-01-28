@@ -82,7 +82,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-name">Event name</label>
 			<input
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
 				id="event-name"
 				type="text"
 				name="eventName"
@@ -92,7 +92,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="game-name">Game name</label>
 			<input
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
 				id="game-name"
 				type="text"
 				name="gameName"
@@ -115,7 +115,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="timezone">Timezone</label>
 			<input
-				class="input"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white"
 				type="search"
 				name="timezone-label"
 				bind:value={timezoneInputLabel}
@@ -143,7 +143,7 @@
 				Date (Format: DD/MM/YY HOUR:MINUTE)
 			</label>
 			<input
-				class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white dark:[color-scheme:dark]"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-xs rounded-lg text-white dark:[color-scheme:dark]"
 				id="date-time"
 				type="datetime-local"
 				name="dateTime"
