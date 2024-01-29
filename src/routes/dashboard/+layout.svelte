@@ -27,7 +27,32 @@
 	let discordUser: any;
 	let session: any;
 
-	const initialChecks = async () => {
+	// const initialChecks = async () => {
+	// 	guildInfoStore.set({
+	// 		imgUrl: guildInfo.icon
+	// 			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
+	// 			: '/icons/null-image.svg',
+	// 		guildName: guildInfo.name,
+	// 		guildId: id,
+	// 	});
+
+	// 	getUser().subscribe((u) => (discordUser = u));
+
+	// 	getSession().subscribe((s) => {
+	// 		session = s;
+	// 		return;
+	// 	});
+
+	// 	guildInfoStore.set({
+	// 		imgUrl: guildInfo.icon
+	// 			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
+	// 			: '/icons/null-image.svg',
+	// 		guildName: guildInfo.name,
+	// 		guildId: id,
+	// 	});
+	// };
+
+	onMount(async () => {
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -50,11 +75,7 @@
 			guildName: guildInfo.name,
 			guildId: id,
 		});
-	};
 
-	initialChecks();
-
-	onMount(async () => {
 		// checks and add the user in DB if not in DB - this is needed to check for user role
 		await checkAddUser({
 			discordUserId: discordUser.user_metadata.provider_id,

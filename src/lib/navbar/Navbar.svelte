@@ -45,7 +45,6 @@
 					</a>
 				</li>
 			{/each}
-			<li></li>
 		</ul>
 		{#if !discordUser}
 			<button
@@ -58,13 +57,13 @@
 			<div class="flex gap-3">
 				<a
 					href="/select-server"
-					class="btn btn-light-secondary text-white font-bold rounded-md"
+					class="btn btn-light-secondary text-white font-bold rounded-md h-auto"
 				>
 					Manage Servers
 				</a>
 
 				<button
-					class="btn btn-square btn-error justify-center border-2 rounded-md"
+					class="btn btn-square btn-error justify-center border-2 rounded-md h-auto"
 					on:click={signOut}
 				>
 					<i class="ri-logout-box-r-line font-medium text-xl" />

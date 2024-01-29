@@ -35,10 +35,10 @@
 			{discordUser ? discordUser.user_metadata.full_name : 'Loading'}
 		</p>
 		<button
-			class="bg-none border-0 ml-5 hover:cursor-pointer"
+			class="btn btn-square btn-error justify-center border-2 rounded-md h-auto"
 			on:click={signOut}
 		>
-			<img class="w-12" src="/icons/signout.svg" alt="sign out" />
+			<i class="ri-logout-box-r-line font-medium text-xl" />
 		</button>
 	</div>
 </div>
