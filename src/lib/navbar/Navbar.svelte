@@ -7,6 +7,17 @@
 		getUser,
 	} from '$lib/supabase/auth';
 
+	const links: Array<{ name: string; link: string }> = [
+		{
+			name: 'About Us',
+			link: '/',
+		},
+		{
+			name: 'Add Bot',
+			link: '/',
+		},
+	];
+
 	let discordUser: any;
 	getUser().subscribe((u) => (discordUser = u));
 
@@ -24,44 +35,41 @@
 	<img src="/logo/etourne-letter-logo.svg" alt="etourne logo" />
 	<div class="flex items-center justify-between gap-20">
 		<ul class="list-none flex items-center gap-16">
-			{#if discordUser}
+			{#each links as { name, link }}
 				<li>
 					<a
-						href="/select-server"
-						class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
-						>Dashboard</a
+						href={link}
+						class="text-white no-underline text-normal font-bold visited:text-white visited:no-underline hover:text-primary transition-all ease-in-out duration-200"
 					>
+						{name}
+					</a>
 				</li>
-			{/if}
-			<li>
-				<a
-					href="/"
-					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
-					>About</a
-				>
-			</li>
-			<li>
-				<a
-					href="/"
-					class="text-white no-underline text-normal font-bold visited:text-whtie visited:no-underline hover:text-primary"
-					>Add Bot</a
-				>
-			</li>
+			{/each}
+			<li></li>
 		</ul>
 		{#if !discordUser}
 			<button
-				class="flex gap-5 items-center text-normal font-bold bg-primary text-white border-0 rounded-2xl py-4 px-7"
+				class="btn btn-primary font-bold bg-primary text-white rounded-md"
 				on:click={signIn}
 			>
-				<img src="/icons/discord-logo.svg" alt="discord logo" /> Sign In
+				<i class="ri-discord-line text-xl"></i> Sign In with Discord
 			</button>
 		{:else}
-			<button
-				class="bg-none border-0 hover:cursor-pointer"
-				on:click={signOut}
-			>
-				<img class="w-[50px]" src="/icons/signout.svg" alt="sign out" />
-			</button>
+			<div class="flex gap-3">
+				<a
+					href="/select-server"
+					class="btn btn-light-secondary text-white font-bold rounded-md"
+				>
+					Manage Servers
+				</a>
+
+				<button
+					class="btn btn-square btn-error justify-center border-2 rounded-md"
+					on:click={signOut}
+				>
+					<i class="ri-logout-box-r-line font-medium text-xl" />
+				</button>
+			</div>
 		{/if}
 	</div>
 </div>

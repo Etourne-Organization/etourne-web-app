@@ -37,7 +37,7 @@ export default {
 					info: '#ffffff',
 					success: '#00ffff',
 					warning: '#ffffff',
-					error: '#ffffff',
+					error: '#b91c1c',
 				},
 			},
 		],
