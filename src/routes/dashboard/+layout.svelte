@@ -27,32 +27,7 @@
 	let discordUser: any;
 	let session: any;
 
-	// const initialChecks = async () => {
-	// 	guildInfoStore.set({
-	// 		imgUrl: guildInfo.icon
-	// 			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-	// 			: '/icons/null-image.svg',
-	// 		guildName: guildInfo.name,
-	// 		guildId: id,
-	// 	});
-
-	// 	getUser().subscribe((u) => (discordUser = u));
-
-	// 	getSession().subscribe((s) => {
-	// 		session = s;
-	// 		return;
-	// 	});
-
-	// 	guildInfoStore.set({
-	// 		imgUrl: guildInfo.icon
-	// 			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-	// 			: '/icons/null-image.svg',
-	// 		guildName: guildInfo.name,
-	// 		guildId: id,
-	// 	});
-	// };
-
-	onMount(async () => {
+	const initialChecks = async () => {
 		guildInfoStore.set({
 			imgUrl: guildInfo.icon
 				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
@@ -66,6 +41,31 @@
 		getSession().subscribe((s) => {
 			session = s;
 			return;
+		});
+
+		guildInfoStore.set({
+			imgUrl: guildInfo.icon
+				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
+				: '/icons/null-image.svg',
+			guildName: guildInfo.name,
+			guildId: id,
+		});
+	};
+
+	onMount(async () => {
+		getUser().subscribe((u) => (discordUser = u));
+
+		getSession().subscribe((s) => {
+			session = s;
+			return;
+		});
+
+		guildInfoStore.set({
+			imgUrl: guildInfo.icon
+				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
+				: '/icons/null-image.svg',
+			guildName: guildInfo.name,
+			guildId: id,
 		});
 
 		guildInfoStore.set({
