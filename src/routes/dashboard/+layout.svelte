@@ -22,96 +22,67 @@
 
 	const { id } = $page.params;
 
-	let isLoading: boolean = true;
-
 	let discordUser: any;
 	let session: any;
 
-	const initialChecks = async () => {
-		guildInfoStore.set({
-			imgUrl: guildInfo.icon
-				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-				: '/icons/null-image.svg',
-			guildName: guildInfo.name,
-			guildId: id,
-		});
+	guildInfoStore.set({
+		imgUrl: guildInfo.icon
+			? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
+			: '/icons/null-image.svg',
+		guildName: guildInfo.name,
+		guildId: id,
+	});
 
-		getUser().subscribe((u) => (discordUser = u));
+	onMount(() => {
+		getUser().subscribe(async (u: any) => {
+			discordUser = u;
 
-		getSession().subscribe((s) => {
-			session = s;
-			return;
-		});
+			if (u) {
+				// checks and add the user in DB if not in DB - this is needed to check for user role
+				await checkAddUser({
+					discordUserId: u.user_metadata.provider_id,
+					username: u.user_metadata.full_name,
+					discordServerId: id,
+				});
 
-		guildInfoStore.set({
-			imgUrl: guildInfo.icon
-				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-				: '/icons/null-image.svg',
-			guildName: guildInfo.name,
-			guildId: id,
-		});
-	};
+				const userRole: Array<{ roleId: number }> | null =
+					await getUserRole({
+						discordUserId: u.user_metadata.provider_id,
+						discordServerId: id,
+					})!;
 
-	onMount(async () => {
-		getUser().subscribe((u) => (discordUser = u));
-
-		getSession().subscribe((s) => {
-			session = s;
-			return;
-		});
-
-		guildInfoStore.set({
-			imgUrl: guildInfo.icon
-				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-				: '/icons/null-image.svg',
-			guildName: guildInfo.name,
-			guildId: id,
-		});
-
-		guildInfoStore.set({
-			imgUrl: guildInfo.icon
-				? `https://cdn.discordapp.com/icons/${id}/${guildInfo.icon}.png`
-				: '/icons/null-image.svg',
-			guildName: guildInfo.name,
-			guildId: id,
-		});
-
-		// checks and add the user in DB if not in DB - this is needed to check for user role
-		await checkAddUser({
-			discordUserId: discordUser.user_metadata.provider_id,
-			username: discordUser.user_metadata.full_name,
-			discordServerId: id,
-		});
-
-		const userRole: Array<{ roleId: number }> | null = await getUserRole({
-			discordUserId: discordUser.user_metadata.provider_id,
-			discordServerId: id,
-		})!;
-
-		if (userRole && userRole[0].roleId === 1) {
-			goto('/insufficient-permission');
-			return;
-		}
-
-		if (!discordUser) {
-			goto('/');
-			return;
-		}
-
-		if (session) {
-			if (!session.provider_token) {
-				signOut();
-				goto('/');
-				return;
+				if (userRole && userRole[0].roleId === 1) {
+					goto('/insufficient-permission');
+					return;
+				}
 			}
-		}
 
-		isLoading = false;
+			setTimeout(() => {
+				if (!u) {
+					goto('/');
+					return;
+				}
+			}, 10000);
+		});
+
+		getSession().subscribe((s: any) => {
+			session = s;
+
+			setTimeout(() => {
+				if (s) {
+					if (!s.provider_token) {
+						signOut();
+						goto('/');
+						return;
+					}
+				}
+			}, 5000);
+		});
 	});
 </script>
 
 <div class="flex h-screen bg-secondary">
-	{#if isLoading}
+	{#if !discordUser || !session}
 		<p class="text-normal text-white mt-5">Loading ...</p>
 	{:else}
 		<div class="left-sidebar">
