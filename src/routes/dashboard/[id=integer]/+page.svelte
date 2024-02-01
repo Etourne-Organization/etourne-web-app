@@ -12,9 +12,6 @@
 
 	import { Toaster } from 'svelte-french-toast';
 
-	import AddIcon from '$lib/dashboard/sidebar/icons/AddIcon.svelte';
-	import CalendarIcon from '$lib/dashboard/sidebar/icons/CalendarIcon.svelte';
-
 	const onCreateEventClick = () => {
 		goto(`${$page.url.pathname}/create-event`);
 	};
@@ -46,14 +43,14 @@
 				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-2xl min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
 				on:click={onCreateEventClick}
 			>
-				<AddIcon color="var(--white-color)" width={50} height={50} />
+				<i class="ri-add-circle-fill text-white text-3xl" />
 				<p class="text-normal text-white">Create event</p>
 			</button>
 			<button
 				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-2xl min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
 				on:click={onAllEventsClick}
 			>
-				<CalendarIcon color="var(--white-color)" width={50} height={50} />
+				<i class="ri-calendar-fill text-white text-3xl" />
 				<p class="text-normal text-white">All events</p>
 			</button>
 		</div>
