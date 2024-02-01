@@ -23,7 +23,7 @@
 			class="fixed inset-0 z-50 backdrop-blur-sm"
 		/>
 		<Dialog.Content
-			class="fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] rounded-lg border p-5 outline-none bg-secondary border-none sm:max-w-[490px] md:w-full"
+			class="fixed left-[50%] top-[50%] z-50 w-full max-w-[94%] translate-x-[-50%] translate-y-[-50%] rounded-md border p-5 outline-none bg-secondary border-none sm:max-w-[490px] md:w-full"
 			transition={fade}
 			transitionConfig={{ duration: 150 }}
 		>
@@ -35,10 +35,12 @@
 			<Separator.Root class="-mx-5 mb-6 mt-5 block h-px bg-gray-400" />
 			<div class="flex justify-center gap-3">
 				<Dialog.Close on:click={onDeleteButtonClick}>
-					<button class="btn border-red-600 bg-red-600">Delete</button>
+					<button class="btn border-red-600 bg-red-600 rounded-md"
+						>Delete</button
+					>
 				</Dialog.Close>
 				<Dialog.Close>
-					<button class="btn btn-neutral">Cancel</button>
+					<button class="btn btn-neutral rounded-md">Cancel</button>
 				</Dialog.Close>
 			</div>
 		</Dialog.Content>

@@ -82,7 +82,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-name">Event name</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 				id="event-name"
 				type="text"
 				name="eventName"
@@ -92,7 +92,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="game-name">Game name</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 				id="game-name"
 				type="text"
 				name="gameName"
@@ -102,7 +102,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="timezone">Timezone</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 				type="search"
 				name="timezone-label"
 				bind:value={timezoneInputLabel}
@@ -115,14 +115,14 @@
 				bind:value={timezoneInputValue}
 			/>
 			<div
-				class="card w-full max-w-lg bg-light-secondary max-h-48 p-4 overflow-y-auto rounded-lg"
+				class="card w-full max-w-lg bg-light-secondary max-h-48 p-4 overflow-y-auto rounded-md"
 				tabindex="-1"
 			>
 				<Autocomplete
 					bind:input={timezoneInputLabel}
 					options={tzNames}
 					on:selection={onTimezoneSelection}
-					regionItem="p-3 hover:bg-secondary rounded-lg hover:cursor-pointer"
+					regionItem="p-3 hover:bg-secondary rounded-md hover:cursor-pointer"
 				/>
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 				Date and time of the event
 			</label>
 			<input
-				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white dark:[color-scheme:dark]"
+				class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white dark:[color-scheme:dark]"
 				id="date-time"
 				type="datetime-local"
 				name="dateTime"
@@ -142,7 +142,7 @@
 		<div class="flex flex-col gap-[10px]">
 			<label class="text-white" for="event-type">Event type</label>
 			<select
-				class="select select-primary w-full max-w-lg bg-light-secondary border-0 rounded-lg text-white"
+				class="select select-primary w-full max-w-lg bg-light-secondary border-0 rounded-md text-white"
 				name="eventType"
 				id="event-type"
 				bind:value={eventType}
@@ -158,7 +158,7 @@
 						>Set max num of teams</label
 					>
 					<input
-						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 						id="max-num-teams"
 						type="number"
 						name="maxNumTeams"
@@ -170,7 +170,7 @@
 						>Set max num of team players</label
 					>
 					<input
-						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 						id="max-num-team-players"
 						type="number"
 						name="maxNumTeamPlayers"
@@ -183,7 +183,7 @@
 						>Set max num of players</label
 					>
 					<input
-						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-lg text-white"
+						class="input input-primary border-0 bg-light-secondary w-full max-w-lg rounded-md text-white"
 						id="max-num-players"
 						type="number"
 						name="maxNumPlayers"
@@ -193,7 +193,7 @@
 			{/if}
 		</div>
 		<input
-			class="bg-light-secondary border-0 rounded-lg py-3 px-[10px] text-white focus:outline-none"
+			class="bg-light-secondary border-0 rounded-md py-3 px-[10px] text-white focus:outline-none"
 			id="event-host"
 			type="text"
 			name="eventHost"
@@ -206,13 +206,13 @@
 				>Event description</label
 			>
 			<textarea
-				class="textarea textarea-primary bg-light-secondary border-0 rounded-lg text-white max-w-lg"
+				class="textarea textarea-primary bg-light-secondary border-0 rounded-md text-white max-w-lg"
 				id="event-description"
 				name="eventDescription"
 			/>
 		</div>
 		<input
-			class="btn btn-primary text-white mt-[10px] rounded-2xl max-w-sm"
+			class="btn btn-primary text-white mt-[10px] rounded-md max-w-sm"
 			id="submit-btn"
 			type="submit"
 			name="submit"
