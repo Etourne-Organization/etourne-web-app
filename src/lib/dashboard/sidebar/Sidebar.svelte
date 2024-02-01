@@ -3,7 +3,6 @@
 
 	import { get } from 'svelte/store';
 
-	import SettingsIcon from './icons/SettingsIcon.svelte';
 	import { activePage } from '../../../store/sidebarStore';
 
 	let whichLinkHover: string = '';
