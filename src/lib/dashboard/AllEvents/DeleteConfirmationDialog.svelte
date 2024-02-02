@@ -3,16 +3,41 @@
 	export let isDialogOpen: boolean;
 
 	import { fade } from 'svelte/transition';
+	import { goto, replaceState } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	import { Dialog, Separator } from 'bits-ui';
+	import toast, { Toaster } from 'svelte-french-toast';
 
 	import { deleteEvent } from '$lib/supabase/supabaseFunctions/events';
 
 	const onDeleteButtonClick = async () => {
-		await deleteEvent({ eventId });
+		const toastId = toast.loading('Working on it...');
+
+		try {
+			await deleteEvent({ eventId });
+
+			toast.success('Event deleted successfully!', {
+				id: toastId,
+				duration: 5000,
+			});
+
+			console.log($page.url.pathname);
+
+			await goto($page.url.pathname, {
+				replaceState: true,
+				invalidateAll: true,
+			});
+		} catch (err) {
+			toast.error('Event deletion failed!', {
+				id: toastId,
+				duration: 5000,
+			});
+		}
 	};
 </script>
 
+<Toaster />
 <Dialog.Root bind:open={isDialogOpen}>
 	<Dialog.Trigger />
 
@@ -35,9 +60,9 @@
 			<Separator.Root class="-mx-5 mb-6 mt-5 block h-px bg-gray-400" />
 			<div class="flex justify-center gap-3">
 				<Dialog.Close on:click={onDeleteButtonClick}>
-					<button class="btn border-red-600 bg-red-600 rounded-md"
-						>Delete</button
-					>
+					<button class="btn border-red-600 bg-red-600 rounded-md">
+						Delete
+					</button>
 				</Dialog.Close>
 				<Dialog.Close>
 					<button class="btn btn-neutral rounded-md">Cancel</button>
