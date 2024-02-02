@@ -3,7 +3,7 @@
 	export let isDialogOpen: boolean;
 
 	import { fade } from 'svelte/transition';
-	import { goto, replaceState } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	import { Dialog, Separator } from 'bits-ui';
