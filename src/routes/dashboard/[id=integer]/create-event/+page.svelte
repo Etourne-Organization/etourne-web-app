@@ -59,7 +59,6 @@
 				}
 			});
 
-			console.log('processing');
 			const toastId = toast.loading('Working on it...');
 
 			return async ({ result }) => {

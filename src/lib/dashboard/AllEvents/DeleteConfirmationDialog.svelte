@@ -3,38 +3,13 @@
 	export let isDialogOpen: boolean;
 
 	import { fade } from 'svelte/transition';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { invalidateAll } from '$app/navigation';
+	import { enhance } from '$app/forms';
 
 	import { Dialog, Separator } from 'bits-ui';
 	import toast, { Toaster } from 'svelte-french-toast';
 
 	import { deleteEvent } from '$lib/supabase/supabaseFunctions/events';
-
-	const onDeleteButtonClick = async () => {
-		const toastId = toast.loading('Working on it...');
-
-		try {
-			await deleteEvent({ eventId });
-
-			toast.success('Event deleted successfully!', {
-				id: toastId,
-				duration: 5000,
-			});
-
-			console.log($page.url.pathname);
-
-			await goto($page.url.pathname, {
-				replaceState: true,
-				invalidateAll: true,
-			});
-		} catch (err) {
-			toast.error('Event deletion failed!', {
-				id: toastId,
-				duration: 5000,
-			});
-		}
-	};
 </script>
 
 <Toaster />
@@ -59,11 +34,37 @@
 			</Dialog.Title>
 			<Separator.Root class="-mx-5 mb-6 mt-5 block h-px bg-gray-400" />
 			<div class="flex justify-center gap-3">
-				<Dialog.Close on:click={onDeleteButtonClick}>
-					<button class="btn border-red-600 bg-red-600 rounded-md">
-						Delete
-					</button>
-				</Dialog.Close>
+				<form
+					action="?/deleteEvent"
+					use:enhance={(input) => {
+						const toastId = toast.loading('Working on it...');
+
+						input.formData.append('eventId', eventId.toString());
+
+						return async ({ result }) => {
+							// `result` is an `ActionResult` object
+							if (result.type === 'success') {
+								toast.success('Event deleted successfully!', {
+									id: toastId,
+									duration: 5000,
+								});
+							} else {
+								toast.error('Event deletion failed!', {
+									id: toastId,
+									duration: 5000,
+								});
+							}
+						};
+					}}
+					method="POST"
+				>
+					<!-- on:click={onDeleteButtonClick} -->
+					<Dialog.Close>
+						<button class="btn border-red-600 bg-red-600 rounded-md">
+							Delete
+						</button>
+					</Dialog.Close>
+				</form>
 				<Dialog.Close>
 					<button class="btn btn-neutral rounded-md">Cancel</button>
 				</Dialog.Close>
