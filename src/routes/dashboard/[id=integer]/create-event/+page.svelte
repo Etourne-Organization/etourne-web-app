@@ -62,7 +62,6 @@
 			const toastId = toast.loading('Working on it...');
 
 			return async ({ result }) => {
-				console.log(result);
 				// `result` is an `ActionResult` object
 				if (result.type === 'success') {
 					toast.success('Event created successfully!', {
