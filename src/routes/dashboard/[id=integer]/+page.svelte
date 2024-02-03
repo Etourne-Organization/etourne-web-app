@@ -40,14 +40,14 @@
 
 		<div class="flex gap-10 mt-6">
 			<button
-				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-md min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
+				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-md min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1] ease-in-out duration-200"
 				on:click={onCreateEventClick}
 			>
 				<i class="ri-add-circle-fill text-white text-3xl" />
 				<p class="text-normal text-white">Create event</p>
 			</button>
 			<button
-				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-md min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1]"
+				class="flex items-center gap-[30px] bg-light-secondary py-6 px-5 rounded-md min-w-[223px] border-0 hover:cursor-pointer hover:shadow-sm hover:brightness-90 hover:transition-transform hover:scale-[1.1] ease-in-out duration-200"
 				on:click={onAllEventsClick}
 			>
 				<i class="ri-calendar-fill text-white text-3xl" />
