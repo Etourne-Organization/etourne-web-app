@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#if allEvents.length > 0}
+			{#if allEvents && allEvents.length > 0}
 				{#each allEvents as aE}
 					<tr>
 						<td>{aE.id}</td>

@@ -53,7 +53,6 @@
 			// calling `cancel()` will prevent the submission
 			getUser().subscribe((u) => {
 				if (!u) {
-					console.log('not signed in');
 					cancel();
 					goto('/');
 				}

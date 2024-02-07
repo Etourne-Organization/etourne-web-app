@@ -3,13 +3,10 @@
 	export let isDialogOpen: boolean;
 
 	import { fade } from 'svelte/transition';
-	import { invalidateAll } from '$app/navigation';
 	import { enhance } from '$app/forms';
 
 	import { Dialog, Separator } from 'bits-ui';
 	import toast, { Toaster } from 'svelte-french-toast';
-
-	import { deleteEvent } from '$lib/supabase/supabaseFunctions/events';
 </script>
 
 <Toaster />
@@ -44,10 +41,15 @@
 						return async ({ result }) => {
 							// `result` is an `ActionResult` object
 							if (result.type === 'success') {
-								toast.success('Event deleted successfully!', {
-									id: toastId,
-									duration: 5000,
-								});
+								toast.success(
+									'Event deleted successfully! Page reloading...',
+									{
+										id: toastId,
+										duration: 5000,
+									},
+								);
+
+								location.reload();
 							} else {
 								toast.error('Event deletion failed!', {
 									id: toastId,

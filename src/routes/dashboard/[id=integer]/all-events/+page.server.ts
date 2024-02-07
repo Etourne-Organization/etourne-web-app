@@ -1,15 +1,14 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { page } from '$app/stores';
+import { fail } from '@sveltejs/kit';
 
 import {
-	getAllEvents,
+	getAllEventsByServerId,
 	deleteEvent,
 } from '$lib/supabase/supabaseFunctions/events';
 
 export const load = async ({ params, url }) => {
 	const guildId: string = url.pathname.split('/')[2];
 
-	const allEvents = await getAllEvents({ discordServerId: guildId });
+	const allEvents = await getAllEventsByServerId({ discordServerId: guildId });
 
 	return {
 		allEvents,
@@ -21,8 +20,6 @@ export const actions = {
 		try {
 			const formData = await request.formData();
 			const eventId: string | any = formData.get('eventId');
-
-			console.log(url.pathname);
 
 			if (eventId) await deleteEvent({ eventId: parseInt(eventId) });
 			// throw redirect(302, url.href);

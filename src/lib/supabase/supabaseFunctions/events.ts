@@ -9,10 +9,6 @@ interface getAllEventsByServerId {
 	discordServerId: string;
 }
 
-interface getAllEvents {
-	discordServerId: string;
-}
-
 interface getAllTeamEventsByServerId {
 	discordServerId: string;
 }
@@ -40,27 +36,6 @@ interface getNumEventsCreateInServer {
 interface deletEvent {
 	eventId: number;
 }
-
-export const getAllEvents = async (props: getAllEvents) => {
-	const { discordServerId } = props;
-
-	const { data: getServerIdData, error: getServerIdError } = await getServerId(
-		{
-			discordServerId: discordServerId,
-		},
-	);
-
-	if (getServerIdError) throw getServerIdError;
-
-	const { data, error } = await supabase
-		.from('Events')
-		.select('*')
-		.eq('serverId', getServerIdData![0]['id']);
-
-	if (error) throw error;
-
-	return data;
-};
 
 export const getAllEventsByServerId = async (props: getAllEventsByServerId) => {
 	const { discordServerId } = props;
