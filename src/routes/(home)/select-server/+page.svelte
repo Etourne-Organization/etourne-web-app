@@ -1,6 +1,6 @@
 <script lang="ts">
 	let guilds: [] | any = [];
-	let filteredGuilds: [] | any = [];
+	let etourneBotGuilds: [] | any = [];
 	let isLoading: boolean = true;
 
 	import { goto } from '$app/navigation';
@@ -39,9 +39,23 @@
 					.then((res) => res.json())
 					.then(async (res) => {
 						const guildIds = res.map((r: any) => r.id);
-						filteredGuilds = await getFilteredServers({
+						const etourneBotGuildIds = await getFilteredServers({
 							discordServerIds: guildIds,
 						});
+
+						etourneBotGuilds = res.filter((r: any) =>
+							etourneBotGuildIds.includes(r.id),
+						);
+
+						// remove etourneBotGuilds from res
+						etourneBotGuildIds.forEach((g: any) => {
+							console.log(g);
+							res.splice(res.indexOf(g), 1);
+						});
+
+						// res.forEach((r: any, i: number) => {
+						// 	if (r.id ===  )
+						// })
 
 						guilds = res;
 					});

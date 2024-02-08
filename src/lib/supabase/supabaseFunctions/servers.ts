@@ -99,5 +99,5 @@ export const getFilteredServers = async (props: getFilteredServers) => {
 		discordServerIds.includes(d.serverId),
 	);
 
-	return filteredData;
+	return filteredData.map((d) => d.serverId);
 };
