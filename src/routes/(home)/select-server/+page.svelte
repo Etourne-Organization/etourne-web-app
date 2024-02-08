@@ -1,5 +1,6 @@
 <script lang="ts">
 	let guilds: [] | any = [];
+	let filteredGuilds: [] | any = [];
 	let isLoading: boolean = true;
 
 	import { goto } from '$app/navigation';
@@ -7,39 +8,47 @@
 
 	import Server from '$lib/selectServer/Server.svelte';
 	import { getUser, getSession, signOut } from '$lib/supabase/auth';
+	import { getFilteredServers } from '$lib/supabase/supabaseFunctions/servers';
 
 	onMount(async () => {
 		let discordUser: any;
 		let session: any;
 
-		getUser().subscribe((u) => (discordUser = u));
+		getUser().subscribe((u) => {
+			discordUser = u;
 
-		getSession().subscribe((s) => {
-			session = s;
-		});
-
-		if (!discordUser) {
-			goto('/');
-		}
-
-		if (session) {
-			if (!session.provider_token) {
-				signOut();
+			if (!u) {
 				goto('/');
 			}
+		});
 
-			await fetch('https://discord.com/api/users/@me/guilds', {
-				headers: {
-					Authorization: `Bearer ${session.provider_token}`,
-				},
-			})
-				.then((res) => res.json())
-				.then((res) => {
-					guilds = res;
-				});
+		getSession().subscribe(async (s: any) => {
+			session = s;
 
-			isLoading = false;
-		}
+			if (s) {
+				if (!s.provider_token) {
+					signOut();
+					goto('/');
+				}
+
+				await fetch('https://discord.com/api/users/@me/guilds', {
+					headers: {
+						Authorization: `Bearer ${s.provider_token}`,
+					},
+				})
+					.then((res) => res.json())
+					.then(async (res) => {
+						const guildIds = res.map((r: any) => r.id);
+						filteredGuilds = await getFilteredServers({
+							discordServerIds: guildIds,
+						});
+
+						guilds = res;
+					});
+
+				isLoading = false;
+			}
+		});
 	});
 </script>
 
@@ -58,7 +67,7 @@
 	{#if isLoading}
 		<p class="text-normal text-white mt-5">Loading ...</p>
 	{:else}
-		<ul
+		<div
 			class="mt-12 grid grid-cols-1 md:grid-cols-5 auto-rows-min gap-y-10 gap-x-7"
 		>
 			{#each guilds as g}
@@ -70,6 +79,6 @@
 					guildName={g.name}
 				/>
 			{/each}
-		</ul>
+		</div>
 	{/if}
 </div>
