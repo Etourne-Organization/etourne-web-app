@@ -48,14 +48,9 @@
 						);
 
 						// remove etourneBotGuilds from res
-						etourneBotGuildIds.forEach((g: any) => {
-							console.log(g);
+						etourneBotGuilds.forEach((g: any) => {
 							res.splice(res.indexOf(g), 1);
 						});
-
-						// res.forEach((r: any, i: number) => {
-						// 	if (r.id ===  )
-						// })
 
 						guilds = res;
 					});
@@ -75,12 +70,28 @@
 		<img src="/icons/server.svg" alt="" />
 		<h1 class="text-heading text-white">Servers</h1>
 	</div>
-	<p class="text-normal text-white mt-5">
-		Servers you and Etourne bot is in. Please select a server.
-	</p>
 	{#if isLoading}
 		<p class="text-normal text-white mt-5">Loading ...</p>
 	{:else}
+		<h3 class="text-normal text-white font-bold mt-10">
+			Servers Etourne Bot is in. Please select a server.
+		</h3>
+		<div
+			class="mt-12 grid grid-cols-1 md:grid-cols-5 auto-rows-min gap-y-10 gap-x-7"
+		>
+			{#each etourneBotGuilds as g}
+				<Server
+					id={g.id}
+					imgUrl={g.icon
+						? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png`
+						: '/logo/etourne-logo-with-bkg.png'}
+					guildName={g.name}
+				/>
+			{/each}
+		</div>
+		<p class="text-normal text-white mt-20 font-bold">
+			Other servers you are in:
+		</p>
 		<div
 			class="mt-12 grid grid-cols-1 md:grid-cols-5 auto-rows-min gap-y-10 gap-x-7"
 		>
