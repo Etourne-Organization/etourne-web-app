@@ -15,6 +15,13 @@
 	--subheading-font-size: 2.2rem;
 }
 
+::selection {
+	text-shadow: none;
+	background: blue;
+	cursor: pointer;
+	/*or any other color*/
+}
+
 @font-face {
 	font-family: 'PT sans';
 	font-style: normal;
