@@ -4,10 +4,6 @@
 	import { get } from 'svelte/store';
 
 	import { activePage } from '../../../store/sidebarStore';
-
-	let whichLinkHover: string = '';
-	// ** THIS IS NEEDED to make the sidebar link go white when it is active
-	let temp: string = get(activePage).value;
 </script>
 
 <div
@@ -19,16 +15,16 @@
 		</div>
 		<ul class="flex flex-col list-none">
 			<li class="font-bold">
+				<!-- 				class:text-white={get(activePage).value === 'DASHBOARD'}
+					class:visited:text-white={get(activePage).value === 'DASHBOARD'} -->
 				<a
 					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white py-5 transition-all ease-in-out duration-200"
 					href={`/dashboard/${guildId}`}
-					on:click={() => {
-						activePage.set({ value: 'DASHBOARD' });
-					}}
-					class:text-white={get(activePage).value === 'DASHBOARD'}
-					class:visited:text-white={get(activePage).value === 'DASHBOARD'}
 				>
-					<i class="ri-dashboard-3-line text-2xl" />
+					<i
+						class="ri-dashboard-3-line text-2xl text-dark-white hover:text-white"
+					>
+					</i>
 					Dashboard
 				</a>
 			</li>
@@ -36,13 +32,10 @@
 				<a
 					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white py-5 transition-all ease-in-out duration-200"
 					href={`/dashboard/${guildId}/all-events`}
-					on:click={() => {
-						activePage.set({ value: 'ALL_EVENTS' });
-					}}
-					class:text-white={get(activePage).value === 'ALL_EVENTS'}
-					class:visited:text-white={get(activePage).value === 'ALL_EVENTS'}
 				>
-					<i class="ri-calendar-fill text-white text-2xl" />
+					<i
+						class="ri-calendar-fill text-dark-white text-2xl hover:text-white"
+					/>
 					Events
 				</a>
 			</li>
@@ -50,14 +43,10 @@
 				<a
 					class="flex gap-5 items-center no-underline visited:text-dark-white visited:no-underline text-dark-white hover:text-white py-5 transition-all ease-in-out duration-200"
 					href={`/dashboard/${guildId}/create-event`}
-					on:click={() => {
-						activePage.set({ value: 'CREATE_EVENT' });
-					}}
-					class:text-white={get(activePage).value === 'CREATE_EVENT'}
-					class:visited:text-white={get(activePage).value ===
-						'CREATE_EVENT'}
 				>
-					<i class="ri-add-circle-fill text-white text-2xl" />
+					<i
+						class="ri-add-circle-fill text-2xl text-dark-white hover:text-white hover:cursor-pointer"
+					/>
 					Create Event
 				</a>
 			</li>

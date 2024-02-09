@@ -18,7 +18,7 @@
 
 <div class="flex justify-between items-center text-white">
 	<div class="flex gap-6 items-center">
-		<img class="w-[100px]" src={imgUrl} alt="discord guild icon" />
+		<img class="w-[100px] rounded-md" src={imgUrl} alt="discord guild icon" />
 		<h2 class="text-sub-heading">{guildName}</h2>
 	</div>
 	<div class="flex items-center gap-5">
@@ -27,7 +27,7 @@
 				? discordUser.user_metadata.avatar_url
 				: '/icons/loading.svg'}
 			alt="discord guild icon"
-			class="w-[50px]"
+			class="w-[50px] rounded-md"
 		/>
 		<p class="text-normal font-bold">
 			{discordUser ? discordUser.user_metadata.full_name : 'Loading'}
