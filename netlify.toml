@@ -1,6 +1,3 @@
 [build]
   command = "yarn run build"
   publish = "build"
-
-[build.environment]
-  DOPPLER_TOKEN = "${DOPPLER_TOKEN}"
