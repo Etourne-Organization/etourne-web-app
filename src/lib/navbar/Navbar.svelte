@@ -14,7 +14,7 @@
 		},
 		{
 			name: 'Add Bot',
-			link: '/',
+			link: 'https://discord.com/api/oauth2/authorize?client_id=981646160798290051&permissions=17869480258752&scope=bot%20applications.commands',
 		},
 	];
 
