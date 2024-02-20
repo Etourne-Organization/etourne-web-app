@@ -1,5 +1,5 @@
 <h1 class="text-primary text-sub-heading">Insufficient permission!</h1>
-<p class="text-white">
+<p class="text-white mt-4">
 	We are sorry but you do not have Admin or Manager Etourne role on this
 	server. Please ask one of the Etourne Admins to give you Admin/Manager role
 	to view the dashboard.
